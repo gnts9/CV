@@ -280,7 +280,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     display: flex; /* Располагаем элементы в строку */
     justify-content: space-between; /* Равномерное распределение */
     flex-wrap: wrap; /* Если не влезут - перенесем на следующую строку */
-    gap: 1rem; /* Отступы между элементами */
+    
 }
 
 .languages-list {
@@ -298,7 +298,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-size: 0.9375rem;
     font-weight: 500;
     margin: 0;
-    gap: 1rem;
+   
 }
 
 
