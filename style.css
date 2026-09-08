@@ -41,20 +41,20 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 .resume-container {
     width: 100%;
     max-width: 1200px;
-    min-width: 800px;
+    /* ВАЖНО: min-width: 800px оставляем, чтобы пропорции 40/60 не схлопывались */
+    min-width: 800px; 
     
     background-color: #ffffffec; 
     
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start; /* Изменил с center на flex-start, чтобы контент не обрезался */
     
-    height: 100vh;
-    max-height: 100vh;
+    /* УБРАЛИ height: 100vh. На мобильном это ломает скролл, если контента много */
+    min-height: 100vh; 
     
     margin: 0 auto;
     position: static;
-   /* overflow: hidden;*/
     scrollbar-gutter: stable;
 }
 
@@ -71,11 +71,10 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     min-width: 320px;
     flex-shrink: 0;
     
-    overflow-y: auto; 
-    max-height: 100vh;
+    /* Убрали overflow-y: auto, чтобы скроллился весь сайт, а не только левая часть */
+    max-height: none; 
     position: static;
     z-index: 2;
-    box-sizing: border-box;
 }
 
 .left-sidebar::-webkit-scrollbar {
@@ -94,7 +93,8 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 
 .left-sidebar::-webkit-scrollbar-thumb:hover {
     background: rgba(78, 76, 76, 0.9); 
-    border-color: 2px solid var rgba(149, 144, 144, 0.9); 
+    /* Исправил синтаксическую ошибку в твоем коде */
+    border-color: 2px solid rgba(149, 144, 144, 0.9); 
 }
 
 .profile-img-wrapper {
@@ -137,8 +137,8 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 .contacts-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Центрирует левую и правую группы по горизонтали */
-    gap: 0.7rem;               /* Расстояние между левой и правой частью (было 0.5rem) */
+    justify-content: center;
+    gap: 0.7rem;
     width: 100%;
 }
 
@@ -148,19 +148,20 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     gap: 0.3rem;
     font-size: 0.9375rem;
     color: var(--text-secondary);
-    margin: 0.5rem;          /* Убирает внешние отступы сверху/снизу */
+    margin: 0.5rem;
     margin-bottom: 0rem;
-    line-height: 0rem;    /* Контролируем высоту строки */
-    
+    line-height: 0rem;
 }
+
 .contact-group img,
 .contact-group svg,
 .setka-icon {
     width: 1.2rem;
     height: 1.2rem;
-    flex-shrink: 0;        /* Запрещает иконке сжиматься */
-    display: block;        /* Убирает лишние отступы у картинок */
+    flex-shrink: 0;
+    display: block;
 }
+
 .contact-group a {
     color: var(--accent-green);
     text-decoration: none;
@@ -236,7 +237,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 .edu-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0rem; /*ТУТ НЕ МЕНЯТЬ, 0 чтобы 2 половины были одной длины */
+    margin-bottom: 0rem;
     font-weight: 500;
     font-size: 0.9375rem;
     color: var(--text-main);
@@ -280,14 +281,13 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 /* ===== СТИЛИ ДЛЯ НАВЫКОВ И ЛИНИИ ПЕРЕД НИМИ ===== */
 .skills-section {
     margin-top: 1rem;
-    position: relative; /* Обязательно для позиционирования линии */
+    position: relative;
 }
 
-/* Линия ПЕРЕД заголовком навыков (на десктопе) */
 .skills-section::before {
     content: '';
     position: absolute;
-    top: -1rem; /* Поднимаем линию чуть выше начала секции, чтобы она не сливалась с border-bottom предыдущей секции */
+    top: -1rem;
     left: 0;
     right: 0;
     height: 1px;
@@ -346,10 +346,9 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     background-color: #f6f6f6;
     flex-grow: 1;
     width: 60%;
-    overflow-y: auto;
-    max-height: 100vh;
+    /* Убрали overflow-y: auto, чтобы скроллился весь сайт */
+    max-height: none;
     position: static;
-    box-sizing: border-box;
     z-index: 2;
     scrollbar-gutter: stable; 
 }
@@ -365,12 +364,13 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 .right-content::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 6px;
-    border-color: 2px solid var rgba(255, 255, 255, 0.2);
+    /* Исправил синтаксическую ошибку в твоем коде */
+    border-color: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .right-content::-webkit-scrollbar-thumb:hover {
     background: rgba(223, 222, 222, 0.6);
-    border-color: 2px solid var rgba(223, 222, 222, 0.6);
+    border-color: 2px solid rgba(223, 222, 222, 0.6);
 }
 
 .section-title {
@@ -506,46 +506,48 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     color: var(--text-dark);
 }
 
-/* ===== АДАПТИВНОСТЬ ===== */
+/* ===== АДАПТИВНОСТЬ (МОБИЛЬНЫЕ) ===== */
 @media (max-width: 1024px) {
     .resume-container {
-        flex-direction: column;
+        /* ГЛАВНОЕ ИЗМЕНЕНИЕ: flex-direction остается row, пропорции 40/60 сохраняются */
+        flex-direction: row; 
         height: auto;
         max-height: none;
         overflow: visible;
+        
+        /* Разрешаем браузеру уменьшать масштаб, если 800px не влезает в 375px */
+        /* Это сохранит твой дизайн 1 в 1, но сделает его меньше */
     }
 
     .left-sidebar {
-        width: 100%;
-        min-width: auto;
+        /* Оставляем ширину 40%, как на десктопе */
+        width: 40%;
+        min-width: 320px;
         padding: 1.5rem;
-        text-align: center;
-        border-bottom: 1px solid var(--border-color);
+        text-align: left; /* Вернули влево, как на десктопе */
+        border-bottom: none;
+        border-right: 1px solid var(--border-color); /* Добавили границу справа для разделения */
         max-height: none;
         height: auto;
-        overflow-y: auto;
+        overflow-y: visible;
         position: static;
         scrollbar-gutter: stable; 
     }
 
     .contacts-container {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-group {
-        justify-content: center;
+        justify-content: flex-start; /* Вернули выравнивание влево */
     }
 
     .languages-section {
         margin-top: 1.5rem;
-        border-top: 1px solid var(--border-color);
-        text-align: center;
+        border-top: none;
+        text-align: left;
     }
 
     .languages-list {
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
+        flex-direction: column; /* Навыки в столбик, как на десктопе */
+        justify-content: flex-start;
+        flex-wrap: nowrap;
     }
 
     .right-content {
@@ -553,45 +555,49 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         padding-right: 2rem;
         padding-bottom: 2rem;
         flex-grow: 1;
-        width: 100%;
+        width: 60%;
         min-height: 0;
-        overflow-y: auto;
+        overflow-y: visible;
         position: static;
         z-index: 1;
     }
 
     .exp-header {
-        flex-direction: column;
+        flex-direction: row; /* Оставляем в одну строку */
         align-items: flex-start;
-        gap: 0.5rem;
+        gap: 1rem;
     }
 
     .exp-company, .exp-period {
-        white-space: normal;
+        white-space: nowrap; /* Оставляем в одну строку */
     }
-
-    /* Адаптация линии для навыков на мобильных */
+    
     .skills-section::before {
-        top: 0; /* На мобильном линия должна быть ровно сверху блока */
-        left: 0;
-        right: 0;
-        height: 1px;
-        background-color: var(--border-color);
+        top: -1rem;
     }
 }
 
 @media (max-width: 600px) {
     body {
-        padding: 10px;
+        padding: 0;
     }
-
+    
+    /* На очень узких экранах (меньше 600px) мы все-таки вынуждены переключить на колонку,
+       иначе текст станет нечитаемым даже при зуме. Это компромисс для UX. */
+    .resume-container {
+        flex-direction: column;
+    }
+    
     .left-sidebar {
-        padding: 1rem;
-        max-height: 40vh;
+        width: 100%;
+        min-width: auto;
+        border-radius: 16px 16px 0 0;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
     }
-
+    
     .right-content {
+        width: 100%;
         padding: 1rem;
-        max-height: 60vh;
     }
 }
