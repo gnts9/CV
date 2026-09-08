@@ -46,7 +46,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     background-color: #ffffffec; 
     
     display: flex;
-    flex-direction: row; /* Строго в ряд */
+    /*flex-direction: row;  Строго в ряд */
     align-items: flex-start;
     
     height: auto; /* Убрали 100vh, чтобы контент не обрезался */
@@ -97,8 +97,8 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 }
 
 .profile-img-wrapper {
-    width: 250px;
-    height: 250px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     overflow: hidden;
     margin: 0 auto 0.5rem auto;
