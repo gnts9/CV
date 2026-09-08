@@ -22,377 +22,170 @@
     padding: 0;
 }
 
-*,
-*:before,
-*:after {
-    font-family: inherit !important;
-    font-style: inherit !important;
-    font-variant: inherit !important;
-    text-transform: inherit !important;
-    letter-spacing: inherit !important;
-    word-spacing: inherit !important;
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+    color: var(--text-body);
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
 }
 
-p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
-    font-style: normal !important;
-}
-
-/* ===== ГЛАВНЫЙ КОНТЕЙНЕР ===== */
 .resume-container {
     width: 100%;
     max-width: 1200px;
-    
-    
-    background-color: #ffffffec; 
-    
+    /* УБРАЛИ min-width, чтобы не было горизонтального скролла */
     display: flex;
     flex-direction: row;
-    align-items: center;
-    
-    height: 100vh;
-    max-height: 100vh;
-    
     margin: 0 auto;
-    position: static;
-   /* overflow: hidden;*/
-    scrollbar-gutter: stable;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-/* ===== ЛЕВАЯ КОЛОНКА ===== */
+/* ===== ЛЕВАЯ КОЛОНКА (САЙДБАР) ===== */
 .left-sidebar {
-    border-radius: 16px 0 0 16px;
-    background-color: #141112;
+    width: 35%;
+    background-color: var(--bg-left);
     color: var(--text-main);
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    width: 40%;
-    min-width: 320px;
-    flex-shrink: 0;
-    
-    overflow-y: auto; 
-    max-height: 100vh;
-    position: static;
-    z-index: 2;
-    box-sizing: border-box;
-}
-
-.left-sidebar::-webkit-scrollbar {
-    width: 8px;
-}
-
-.left-sidebar::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.left-sidebar::-webkit-scrollbar-thumb {
-    background: rgba(43, 39, 39, 0.8);
-    border-radius: 4px;
-    border: 2px solid var(--bg-left);
-}
-
-.left-sidebar::-webkit-scrollbar-thumb:hover {
-    background: rgba(78, 76, 76, 0.9); 
-    border-color: 2px solid var rgba(149, 144, 144, 0.9); 
+    flex-shrink: 0; /* Чтобы не сжималась */
 }
 
 .profile-img-wrapper {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto 0.5rem auto;
-    border: 2px solid var(--border-color);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-    flex-shrink: 0;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1.5rem;
 }
 
 .profile-img-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
+    border-radius: 50%;
+    border: 4px solid var(--accent-green);
 }
 
 .name-title h1 {
-    color: var(--text-main);
-    font-size: 1.25rem;
-    font-weight: 700;
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.8rem;
     margin-bottom: 0.5rem;
-    text-align: center;
     line-height: 1.2;
 }
 
 .name-title h2 {
-    color: var(--text-secondary);
-    font-size: 1.1rem;
+    font-size: 1rem;
+    color: var(--accent-green);
+    font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    text-align: center;
-    font-weight: 600;
-    line-height: 1.2;
+    margin-bottom: 2rem;
 }
 
 .contacts-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Центрирует левую и правую группы по горизонтали */
-    gap: 0.7rem;               /* Расстояние между левой и правой частью (было 0.5rem) */
-    width: 100%;
+    margin-bottom: 2rem;
 }
 
 .contact-group {
     display: flex;
     align-items: center;
-    gap: 0.3rem;
-    font-size: 0.9375rem;
-    color: var(--text-secondary);
-    margin: 0.5rem;          /* Убирает внешние отступы сверху/снизу */
-    margin-bottom: 0rem;
-    line-height: 0rem;    /* Контролируем высоту строки */
-    
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
 }
-.contact-group img,
-.contact-group svg,
-.setka-icon {
-    width: 1.2rem;
-    height: 1.2rem;
-    flex-shrink: 0;        /* Запрещает иконке сжиматься */
-    display: block;        /* Убирает лишние отступы у картинок */
-}
+
 .contact-group a {
-    color: var(--accent-green);
+    color: var(--text-main);
     text-decoration: none;
-    font-weight: 500;
+    transition: opacity 0.2s;
 }
 
 .contact-group a:hover {
-    text-decoration: underline;
-    color: var(--text-main);
+    opacity: 0.8;
 }
 
 .contact-address {
-    width: 100%;
-    text-align: center;
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 0.25rem;
-    font-size: 0.9375rem;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 0.25rem;
-    grid-column: 1 / -1;
 }
 
-.setka-icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    fill: currentColor;
-    flex-shrink: 0;
-}
-
-/* ===== СЕКЦИИ И ЛИНИИ ===== */
 .sidebar-section {
-    border-bottom: 1px solid var(--border-color);
-    padding-bottom: 0.5rem;
-}
-
-.sidebar-section:last-of-type {
-    border-bottom: none;
-    padding-bottom: 0;
+    margin-bottom: 3rem;
 }
 
 .section-header {
-    font-size: 0.9375rem;
-    font-weight: 700;
+    font-family: 'Manrope', sans-serif;
+    font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--text-secondary);
-    margin-bottom: 0.25rem;
-    text-align: left;
-}
-
-.about-content {
-    font-size: 0.9375rem;
-    line-height: 1.55;
-    color: var(--text-main, #333);
-    text-align: justify;
-    hyphens: none;
-    word-break: keep-all;
-    white-space: normal;   
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 0.5rem;
 }
 
 .about-content p {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    color: #d1d5db;
 }
 
 .edu-item {
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .edu-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0rem; /*ТУТ НЕ МЕНЯТЬ, 0 чтобы 2 половины были одной длины */
-    font-weight: 500;
-    font-size: 0.9375rem;
-    color: var(--text-main);
-    white-space: nowrap;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
 }
 
 .edu-desc {
-    font-size: 0.9375rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
-    line-height: 1.4;
-    text-align: justify;
-    hyphens: none;
-    word-break: keep-all;
-    white-space: normal;  
-}
-
-.languages-section {
-    margin-top: 0.5rem;
 }
 
 .languages-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
     list-style: none;
-    padding: 0;
-    margin: 0;
-    text-align: left;
 }
 
 .lang-item {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--text-main);
-    padding: 0.375rem 0.75rem;
-    border-radius: 4px;
-    font-size: 0.9375rem;
-    font-weight: 500;
-    width: fit-content;
-}
-
-/* ===== СТИЛИ ДЛЯ НАВЫКОВ И ЛИНИИ ПЕРЕД НИМИ ===== */
-.skills-section {
-    margin-top: 1rem;
-    position: relative; /* Обязательно для позиционирования линии */
-}
-
-/* Линия ПЕРЕД заголовком навыков (на десктопе) */
-.skills-section::before {
-    content: '';
-    position: absolute;
-    top: -1rem; /* Поднимаем линию чуть выше начала секции, чтобы она не сливалась с border-bottom предыдущей секции */
-    left: 0;
-    right: 0;
-    height: 1px;
-    background-color: var(--border-color);
-}
-
-.skills-title {
-    font-size: 0.9375rem;
-    font-weight: 700;
-    color: var(--text-dark, #1a1a1a);
-    margin: 0 0 0.25rem 0;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
 }
 
 .skills-grid {
-    display: block;
-    text-align: justify;
-    line-height: 0;
-    margin-bottom: 0rem;
-}
-
-.skills-grid::after {
-    content: '';
-    display: inline-block;
-    width: 100%;
-    height: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
 }
 
 .skill-tag {
-    display: inline-block;
-    background-color: rgba(15, 166, 136, 0.44);
-    color: var(--text-secondary);
-    border: 1px solid rgba(8, 174, 141, 0.163);
-    padding: 0.7rem 0.6rem;
-    border-radius: 10px;
-    font-size: 0.9375rem;
-    font-weight: 500;
-    transition: all 0.2s;
-    margin: 0.3rem 0.25rem 0 0; 
-    white-space: nowrap; 
-    word-break: keep-all;
-    text-align: left; 
-}
-
-.skill-tag:hover {
-    background-color: #9cafab;
-    color: white;
-    border-color: var(--results-green);
-}
-
-/* ===== ПРАВАЯ КОЛОНКА ===== */
-.right-content {
-    padding: 1rem;
-    border-radius: 0 16px 16px 0; 
-    background-color: #f6f6f6;
-    flex-grow: 1;
-    width: 60%;
-    overflow-y: auto;
-    max-height: 100vh;
-    position: static;
-    box-sizing: border-box;
-    z-index: 2;
-    scrollbar-gutter: stable; 
-}
-
-.right-content::-webkit-scrollbar {
-    width: 8px;
-}
-
-.right-content::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.right-content::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
+    background-color: var(--skill-bg);
+    color: var(--skill-text);
+    padding: 0.5rem 0.75rem;
     border-radius: 6px;
-    border-color: 2px solid var rgba(255, 255, 255, 0.2);
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid var(--skill-border);
 }
 
-.right-content::-webkit-scrollbar-thumb:hover {
-    background: rgba(223, 222, 222, 0.6);
-    border-color: 2px solid var rgba(223, 222, 222, 0.6);
-}
-
-.section-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid var(--text-secondary);
-    padding-bottom: 0.5rem;
-    display: inline-block;
+/* ===== ПРАВАЯ КОЛОНКА (КОНТЕНТ) ===== */
+.right-content {
+    width: 65%;
+    padding: 3rem;
+    background-color: var(--bg-right);
+    overflow-y: auto; /* Скролл только внутри правой части, если нужно */
 }
 
 .experience-item {
-    margin-bottom: 1rem;
-    border: 1px solid var(--text-secondary); 
-    border-radius: 8px;
-    padding: 1.5rem;
-    background-color: #fffefe;
-}
-
-.experience-item > *:last-child {
-    margin-bottom: 0;
+    margin-bottom: 3rem;
 }
 
 .exp-header {
@@ -400,145 +193,103 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 0.5rem;
-    flex-wrap: wrap;
-    gap: 1rem;
 }
 
 .exp-company {
-    font-size: 1.25rem;
+    font-family: 'Manrope', sans-serif;
     font-weight: 700;
+    font-size: 1.2rem;
     color: var(--exp-company-color);
-    white-space: nowrap;
 }
 
 .exp-period {
-    font-size: 0.9375rem;
+    font-size: 0.9rem;
     color: var(--exp-period-color);
     white-space: nowrap;
 }
 
 .exp-position {
-    font-size: 1.06rem;
+    font-size: 1rem;
+    color: var(--exp-position-color);
     font-weight: 600;
-    color: var(--bg-left);
-    margin-bottom: 0.25rem;
+    margin-bottom: 1rem;
 }
 
 .exp-description {
-    font-size: 0.9375rem;
-    color: var(--bg-left);
-    margin-bottom: 0.5rem;
-    line-height: 1.35;
-    text-align: justify;
-    hyphens: none;
-    word-break: keep-all;
-    white-space: normal;   
+    font-size: 0.95rem;
+    color: var(--text-body);
+    margin-bottom: 1.5rem;
 }
 
 .exp-sub-title {
-    font-size: 0.9375rem;
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 0.5rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.9rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    display: inline-block;
-    padding-bottom: 2px;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    border-left: 3px solid var(--accent-green);
+    padding-left: 0.75rem;
 }
 
-/* ===== СПИСКИ ===== */
 .num-list {
-    list-style: none;
-    counter-reset: num-counter;
-    padding: 0;
-    margin: 0 0 0.25rem 0;
+    list-style-type: none;
+    counter-reset: li-counter;
+    padding-left: 0;
 }
 
 .num-list > li {
-    counter-increment: num-counter;
     position: relative;
-    padding-left: 1rem;
-    margin-bottom: 0.25rem;
-    line-height: 1.35;
-    color: var(--bg-left);
-    font-size: 0.9375rem;
-    text-align: justify;
-    hyphens: none;
-    word-break: keep-all;
-    white-space: normal;  
+    padding-left: 2rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
 }
 
 .num-list > li::before {
-    content: counter(num-counter) ".";
+    content: counter(li-counter) ".";
+    counter-increment: li-counter;
     position: absolute;
     left: 0;
-    top: 0;
     font-weight: 700;
-    font-size: 0.9375rem;
-    color: var(--text-dark);
+    color: var(--accent-green);
 }
 
 .dash-list {
     list-style: none;
-    padding: 0;
-    margin: 0.25rem 0 0.5rem 0;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
 }
 
-.dash-list > li {
-    position: relative;
-    padding-left: 1rem;
+.dash-list li {
     margin-bottom: 0.25rem;
-    line-height: 1.35;
-    color: var(--text-dark);
-    font-size: 0.9375rem;
-    text-align: justify;
-    hyphens: none;
-    word-break: keep-all;
-    white-space: normal;  
+    font-size: 0.9rem;
 }
 
-.dash-list > li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-weight: 700;
-    color: var(--text-dark);
+.dash-list li::before {
+    content: "— ";
+    color: var(--text-secondary);
 }
 
-/* ===== АДАПТИВНОСТЬ ===== */
-/* ===== АДАПТИВНОСТЬ: ДЕРЖИМ ДВЕ КОЛОНКИ, ПРОСТО УМЕНЬШАЕМ ===== */
+/* ===== АДАПТИВНОСТЬ (МОБИЛЬНЫЕ УСТРОЙСТВА) ===== */
 @media (max-width: 1024px) {
     .resume-container {
-        flex-direction: row;
-        height: 100vh;
-        max-height: 100vh;
-        overflow: hidden;
+        flex-direction: column;
     }
 
     .left-sidebar {
-        width: 38%;
-        min-width: 240px;
-        padding: 1rem;
-        max-height: 100vh;
-        overflow-y: auto;
-    }
-
-    .right-content {
-        flex-grow: 1;
-        width: 62%;
-        padding: 1rem;
-        max-height: 100vh;
-        overflow-y: auto;
+        width: 100%;
+        padding: 1.5rem;
+        text-align: center;
     }
 
     .profile-img-wrapper {
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 1.5rem auto;
     }
 
     .name-title h1 {
-        font-size: 1.1rem;
+        font-size: 1.5rem;
     }
 
     .name-title h2 {
@@ -546,61 +297,33 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     }
 
     .contact-group {
-        font-size: 0.85rem;
+        justify-content: center;
     }
 
     .contact-address {
-        font-size: 0.85rem;
+        justify-content: center;
+        color: var(--text-secondary);
     }
 
-    .about-content,
-    .edu-desc,
-    .edu-header,
-    .lang-item,
-    .skill-tag,
-    .section-header {
-        font-size: 0.8rem;
+    .right-content {
+        width: 100%;
+        padding: 1.5rem;
     }
 
-    .exp-company {
-        font-size: 1.1rem;
+    .exp-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
     }
 
     .exp-period {
-        font-size: 0.8rem;
-    }
-
-    .exp-position {
-        font-size: 0.95rem;
-    }
-
-    .exp-description,
-    .num-list > li,
-    .dash-list > li,
-    .exp-sub-title {
-        font-size: 0.8rem;
-    }
-
-    .experience-item {
-        padding: 1rem;
-    }
-
-    .skill-tag {
-        padding: 0.5rem 0.4rem;
-        margin: 0.2rem 0.15rem 0 0;
+        font-size: 0.85rem;
     }
 }
 
 @media (max-width: 600px) {
     .left-sidebar {
-        width: 40%;
-        min-width: 180px;
-        padding: 0.75rem;
-    }
-
-    .right-content {
-        width: 60%;
-        padding: 0.75rem;
+        padding: 1rem;
     }
 
     .profile-img-wrapper {
@@ -609,79 +332,35 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     }
 
     .name-title h1 {
-        font-size: 0.95rem;
+        font-size: 1.3rem;
     }
 
     .name-title h2 {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
     }
 
     .contact-group {
-        font-size: 0.75rem;
-    }
-
-    .contact-address {
-        font-size: 0.75rem;
-    }
-
-    .about-content,
-    .edu-desc,
-    .lang-item,
-    .skill-tag,
-    .section-header {
-        font-size: 0.7rem;
-    }
-
-    .edu-header {
-        font-size: 0.7rem;
-    }
-
-    .exp-company {
-        font-size: 0.95rem;
-    }
-
-    .exp-period {
-        font-size: 0.7rem;
-    }
-
-    .exp-position {
         font-size: 0.85rem;
-    }
-
-    .exp-description,
-    .num-list > li,
-    .dash-list > li,
-    .exp-sub-title {
-        font-size: 0.7rem;
-    }
-
-    .experience-item {
-        padding: 0.75rem;
-    }
-
-    .skill-tag {
-        padding: 0.4rem 0.3rem;
-        margin: 0.15rem 0.1rem 0 0;
-        font-size: 0.7rem;
-    }
-
-    .exp-header {
-        gap: 0.5rem;
-    }
-}
-
-@media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-
-    .left-sidebar {
-        padding: 1rem;
-        max-height: 50vh;
     }
 
     .right-content {
         padding: 1rem;
-        max-height: 70vh;
+    }
+
+    .exp-company {
+        font-size: 1.1rem;
+    }
+
+    .exp-position {
+        font-size: 0.9rem;
+    }
+
+    .num-list > li {
+        padding-left: 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .dash-list {
+        padding-left: 1rem;
     }
 }
