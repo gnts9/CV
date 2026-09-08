@@ -1,193 +1,38 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <!-- Стандартный адаптивный viewport (без жесткой ширины) -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Резюме — Анастасия Ганц</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body lang="ru">
+/* ===== АДАПТИВНОСТЬ ДЛЯ ОЧЕНЬ УЗКИХ ЭКРАНОВ ===== */
+@media (max-width: 768px) {
+    .resume-container {
+        flex-direction: column; /* На очень маленьких экранах колонки встают друг под друга */
+        max-width: 100%;
+        padding: 0.5rem;
+    }
 
-    <div class="resume-container">
+    .left-sidebar,
+    .right-content {
+        width: 100%;
+        min-width: auto;
+        border-radius: 0;
+        padding: 1rem;
+    }
 
-        <!-- ===== ЛЕВАЯ КОЛОНКА (40%) ===== -->
-        <aside class="left-sidebar">
-            <div class="profile-img-wrapper">
-                <!-- Замени photo.jpg на путь к твоему фото -->
-                <img src="photo.jpg" alt="Фото" onerror="this.style.display='none'">
-            </div>
+    .left-sidebar {
+        border-radius: 16px 16px 0 0;
+    }
+    
+    .right-content {
+        border-radius: 0 0 16px 16px;
+    }
 
-            <div class="name-title">
-                <h1>Ганц Анастасия</h1>
-                <h2>Развитие цифровых портфелей (SaaS, B2B2C)</h2>
-            </div>
-
-            <div class="contacts-container">
-                <div class="contact-group">
-                    <span>📱</span>
-                    <a href="tel:+79264571057">+7 (926) 457-10-57</a>
-                </div>
-                <div class="contact-group">
-                    <span>🔗</span>
-                    <a href="https://t.me/gantsss" target="_blank">gantsss</a>
-                </div>
-                <div class="contact-group">
-                    <span>📩</span>
-                    <a href="mailto:gants92@mail.ru">gants92@mail.ru</a>
-                </div>
-                <div class="contact-group">
-                    <svg class="setka-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5V7l5 2.5 5-2.5v6z"/>
-                    </svg>
-                    <a href="https://setka.ru/users/019c4c59-99b8-73f1-a0b0-e34b3bd0fdbb" target="_blank">Setka</a>
-                </div>
-            </div>
-
-            <div class="contact-address">
-                <span>📍</span>
-                <span>Москва, м. Аэропорт</span>
-            </div>
-
-            <div class="sidebar-section">
-                <h3 class="section-header">О себе</h3>
-                <div class="about-content">
-                    <p>Эксперт в развитии портфелей и экосистемы с опытом управления Revenue YoY&gt;3 млрд ₽, GM, LTV, Retention, ARPU/ARPPU (10 лет в Телеком, IT, FMCG).</p>
-                    <p>Сильна в построении системных омниканальных сегментных стратегий, воронок привлечения и удержания, развитии каналов и масштабировании growth-гипотез на основе data-driven подхода.</p>
-                    <p>Фокус — измеримый результат.</p>
-                </div>
-            </div>
-
-            <div class="sidebar-section">
-                <h3 class="section-header">Образование</h3>
-                <div class="edu-item">
-                    <div class="edu-header">
-                        <span>МГТУ «СТАНКИН»</span>
-                        <span>2026</span>
-                    </div>
-                    <div class="edu-desc">Data Scientist (Python), ML / AI</div>
-                </div>
-                <div class="edu-item">
-                    <div class="edu-header">
-                        <span>Growth Academy</span>
-                        <span>2022</span>
-                    </div>
-                    <div class="edu-desc">Growth Hacking</div>
-                </div>
-                <div class="edu-item">
-                    <div class="edu-header">
-                        <span>НИУ МГСУ, Москва</span>
-                        <span>2015</span>
-                    </div>
-                    <div class="edu-desc">Экономика и управление на предприятии в строительстве</div>
-                </div>
-            </div>
-
-            <div class="languages-section">
-                <h3 class="section-header">Языки</h3>
-                <ul class="languages-list">
-                    <li class="lang-item">Русский, Родной</li>
-                    <li class="lang-item">Английский, B1 - средний</li>
-                </ul>
-            </div>
-            
-            <div class="skills-section">
-                <div class="skills-grid">
-                    <span class="skill-tag">Разработка стратегий</span>
-                    <span class="skill-tag">CJM</span>
-                    <span class="skill-tag">P&amp;L</span>
-                    <span class="skill-tag">Performance Marketing</span>
-                    <span class="skill-tag">McKinsey</span>
-                    <span class="skill-tag">Monetization</span>
-                    <span class="skill-tag">Retention</span>
-                    <span class="skill-tag">Activation</span>
-                    <span class="skill-tag">Jira</span>
-                    <span class="skill-tag">E-Commerce</span>
-                    <span class="skill-tag">Product Metrics</span>
-                    <span class="skill-tag">Cohort Analysis</span>
-                    <span class="skill-tag">Digital Marketing</span>
-                    <span class="skill-tag">Воронки</span>
-                    <span class="skill-tag">UI/UX</span>
-                    <span class="skill-tag">Start-up</span>
-                    <span class="skill-tag">Agile</span>
-                    <span class="skill-tag">CVM</span>
-                    <span class="skill-tag">A/B Test</span>
-                    <span class="skill-tag">CustDev</span>
-                    <span class="skill-tag">Figma</span>
-                    <span class="skill-tag">Power BI</span>
-                    <span class="skill-tag">Python</span>
-                </div>
-            </div>
-
-        </aside>
-
-        <!-- ===== ПРАВАЯ КОЛОНКА (60%) ===== -->
-        <main class="right-content">
-
-            <div class="experience-item">
-                <div class="exp-header">
-                    <span class="exp-company">Проектная деятельность</span>
-                    <span class="exp-period">Октябрь 2024 — Сентябрь 2026</span>
-                </div>
-                <div class="exp-position">Развитие продукта, маркетинга, экосистемы</div>
-
-                <ol class="num-list">
-                    <li>Консалтинг для продавцов на маркетплейсе (WB), товары из Китая: Стратегия роста, unit-экономика, CAC/LTV, P&amp;L.</li>
-                    <li>Развивала MVP-продукт: миссия, ЦА, монетизация (книги).</li>
-                    <li>Обучение Data Science AI/ML (Python), МГТУ «СТАНКИН» — сентябрь 2026.</li>
-                </ol>
-            </div>
-
-            <div class="experience-item">
-                <div class="exp-header">
-                    <span class="exp-company">Эр-1 (IT ЭР-Телеком)</span>
-                    <span class="exp-period">Апрель 2024 — Сентябрь 2024</span>
-                </div>
-                <div class="exp-position">Руководитель по развитию каналов, CEO-3, CVM</div>
-                <p class="exp-description">Аудит, оптимизация клиентских сценариев в омниканальной среде и определение точек роста CVM. Управляла эффективностью каналов &gt;10.</p>
-
-                <div class="exp-sub-title">Результаты:</div>
-                <ol class="num-list">
-                    <li>Скорректировала B2C-стратегию с фокусом на Retention, Revenue, Churn.</li>
-                    <li>–20% затрат при сохранении выручки (Робот vs ФОТ ТМ, EBITDA).</li>
-                    <li>Масштабировала up-sell, cross-sell, down-sell-механики (CR, GM, ROI).</li>
-                </ol>
-            </div>
-
-            <div class="experience-item">
-                <div class="exp-header">
-                    <span class="exp-company">МегаФон</span>
-                    <span class="exp-period">Ноябрь 2018 — Октябрь 2023</span>
-                </div>
-                <div class="exp-position">Руководитель портфеля цифровых продуктов, Экосистема, CEO-3, CVM</div>
-                <p class="exp-description">Развитие бренд-партнёрств и монетизация экосистемного портфеля с нуля. Управляла сложными транзакционными продуктами и продвижением на базе &gt;40 млн пользователей.</p>
-
-                <div class="exp-sub-title">Результаты:</div>
-                <ol class="num-list">
-                    <li>+30% YoY выручки портфеля, GM &gt; 500 млн ₽.</li>
-                    <li>+150% CR, +50% AOV, +30% T2Paid, +20% WB, +15% LTV, +5% Retention.</li>
-                    <li>+500 000 пользователей в MVP-продукт за квартал.</li>
-                </ol>
-            </div>
-
-            <div class="experience-item">
-                <div class="exp-header">
-                    <span class="exp-company">SC Johnson</span>
-                    <span class="exp-period">Сентябрь 2015 — Август 2018</span>
-                </div>
-                <div class="exp-position">Финансовый аналитик</div>
-                <p class="exp-description">Управляла финансовой эффективностью продуктовых категорий одной из стран. Оборот &gt; 1 млрд ₽ при росте GM категорий +10%.</p>
-
-                <ol class="num-list">
-                    <li>Контролировала затраты, управляла бюджетом 70 млн ₽ (GAAP: S&amp;OP, P&amp;L).</li>
-                    <li>Автоматизировала процессы ручной смежной отчётности (–20% трудозатрат).</li>
-                </ol>
-            </div>
-
-        </main>
-    </div>
-
-</body>
-</html>
+    .name-title h1 {
+        font-size: 1.25rem;
+    }
+    
+    .exp-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .exp-company, .exp-period {
+        white-space: normal;
+    }
+}
