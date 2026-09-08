@@ -41,20 +41,20 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 .resume-container {
     width: 100%;
     max-width: 1200px;
-    min-width: 800px;
+    min-width: 1200px; /* 🔥 ЖЕСТКАЯ ФИКСАЦИЯ: контейнер не сожмется меньше 1200px */
     
     background-color: #ffffffec; 
     
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: row; /* Строго в ряд */
+    align-items: flex-start;
     
-    height: 100vh;
-    max-height: 100vh;
+    height: auto; /* Убрали 100vh, чтобы контент не обрезался */
+    min-height: 100vh;
     
     margin: 0 auto;
     position: static;
-   /* overflow: hidden;*/
+    overflow-x: auto; /* Разрешаем горизонтальный скролл, если экран очень узкий */
     scrollbar-gutter: stable;
 }
 
@@ -68,8 +68,8 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     flex-direction: column;
     gap: 1rem;
     width: 40%;
-    min-width: 320px;
-    flex-shrink: 0;
+    min-width: 480px; /* 40% от 1200px */
+    flex-shrink: 0; /* Запрещаем сжиматься */
     
     overflow-y: auto; 
     max-height: 100vh;
@@ -94,7 +94,6 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 
 .left-sidebar::-webkit-scrollbar-thumb:hover {
     background: rgba(78, 76, 76, 0.9); 
-    border-color: 2px solid var rgba(149, 144, 144, 0.9); 
 }
 
 .profile-img-wrapper {
@@ -137,8 +136,8 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 .contacts-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Центрирует левую и правую группы по горизонтали */
-    gap: 0.7rem;               /* Расстояние между левой и правой частью (было 0.5rem) */
+    justify-content: center;
+    gap: 0.7rem;
     width: 100%;
 }
 
@@ -148,18 +147,17 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     gap: 0.3rem;
     font-size: 0.9375rem;
     color: var(--text-secondary);
-    margin: 0.5rem;          /* Убирает внешние отступы сверху/снизу */
+    margin: 0.5rem;
     margin-bottom: 0rem;
-    line-height: 0rem;    /* Контролируем высоту строки */
-    
+    line-height: 0rem;    
 }
 .contact-group img,
 .contact-group svg,
 .setka-icon {
     width: 1.2rem;
     height: 1.2rem;
-    flex-shrink: 0;        /* Запрещает иконке сжиматься */
-    display: block;        /* Убирает лишние отступы у картинок */
+    flex-shrink: 0;
+    display: block;
 }
 .contact-group a {
     color: var(--accent-green);
@@ -236,7 +234,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 .edu-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0rem; /*ТУТ НЕ МЕНЯТЬ, 0 чтобы 2 половины были одной длины */
+    margin-bottom: 0rem;
     font-weight: 500;
     font-size: 0.9375rem;
     color: var(--text-main);
@@ -277,17 +275,16 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     width: fit-content;
 }
 
-/* ===== СТИЛИ ДЛЯ НАВЫКОВ И ЛИНИИ ПЕРЕД НИМИ ===== */
+/* ===== СТИЛИ ДЛЯ НАВЫКОВ ===== */
 .skills-section {
     margin-top: 1rem;
-    position: relative; /* Обязательно для позиционирования линии */
+    position: relative;
 }
 
-/* Линия ПЕРЕД заголовком навыков (на десктопе) */
 .skills-section::before {
     content: '';
     position: absolute;
-    top: -1rem; /* Поднимаем линию чуть выше начала секции, чтобы она не сливалась с border-bottom предыдущей секции */
+    top: -1rem;
     left: 0;
     right: 0;
     height: 1px;
@@ -346,6 +343,9 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     background-color: #f6f6f6;
     flex-grow: 1;
     width: 60%;
+    min-width: 720px; /* 60% от 1200px */
+    flex-shrink: 0; /* Запрещаем сжиматься */
+    
     overflow-y: auto;
     max-height: 100vh;
     position: static;
@@ -365,12 +365,11 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 .right-content::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 6px;
-    border-color: 2px solid var rgba(255, 255, 255, 0.2);
+    border-color: 2px solid rgba(255, 255, 255, 0.2);
 }
 
 .right-content::-webkit-scrollbar-thumb:hover {
     background: rgba(223, 222, 222, 0.6);
-    border-color: 2px solid var rgba(223, 222, 222, 0.6);
 }
 
 .section-title {
@@ -400,7 +399,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 0.5rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap; /* Запрещаем перенос заголовка на новую строку */
     gap: 1rem;
 }
 
@@ -506,68 +505,6 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     color: var(--text-dark);
 }
 
-/* ===== АДАПТИВНОСТЬ ===== */
-@media (max-width: 1024px) {
-    .resume-container {
-        flex-direction: column;
-        height: auto;
-        max-height: none;
-        overflow: visible;
-    }
-
-    .left-sidebar {
-        width: 100%;
-        min-width: auto;
-        padding: 1.5rem;
-        text-align: center;
-        border-bottom: 1px solid var(--border-color);
-        max-height: none;
-        height: auto;
-        overflow-y: auto;
-        position: static;
-        scrollbar-gutter: stable; 
-    }
-
-    .contacts-container {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-group {
-        justify-content: center;
-    }
-
-    .languages-section {
-        margin-top: 1.5rem;
-        border-top: 1px solid var(--border-color);
-        text-align: center;
-    }
-
-    .languages-list {
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .right-content {
-        padding-left: 2rem;
-        padding-right: 2rem;
-        padding-bottom: 2rem;
-        flex-grow: 1;
-        width: 100%;
-        min-height: 0;
-        overflow-y: auto;
-        position: static;
-        z-index: 1;
-    }
-
-    .exp-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-
-    .exp-company, .exp-period {
-        white-space: normal;
 
    /* ===== АДАПТИВНОСТЬ ДЛЯ ОЧЕНЬ УЗКИХ ЭКРАНОВ ===== */
 @media (max-width: 768px) {
