@@ -4,179 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Резюме — Анастасия Ганц</title>
-    <!-- Подключаем шрифты -->
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- ВСТАВЛЯЕМ СТИЛИ ПРЯМО СЮДА (чтобы не зависеть от style.css) -->
-    <style>
-        :root {
-            --bg-color: #f4f6f8;
-            --sidebar-bg: #ffffff;
-            --text-main: #1a1a1a;
-            --text-secondary: #666;
-            --accent: #2563eb;
-            --border-color: #e5e7eb;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding: 20px;
-        }
-
-        .resume-container {
-            display: flex;
-            max-width: 1100px;
-            margin: 0 auto;
-            gap: 40px;
-            background: #fff;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        /* Левая колонка */
-        .left-sidebar {
-            flex: 1;
-            background: var(--sidebar-bg);
-            padding: 40px;
-            border-right: 1px solid var(--border-color);
-            min-width: 300px;
-        }
-
-        .profile-img-wrapper {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid var(--accent);
-        }
-
-        .profile-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        h1 { font-size: 24px; color: var(--text-main); margin-bottom: 4px; }
-        h2 { font-size: 16px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
-
-        .contacts-container { margin: 30px 0; }
-        .contact-group {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            color: var(--text-main);
-        }
-        .contact-group span:first-child { margin-right: 10px; font-size: 18px; }
-        .contact-group a { text-decoration: none; color: inherit; transition: opacity 0.2s; }
-        .contact-group a:hover { opacity: 0.7; }
-
-        .contact-address {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-            color: var(--text-secondary);
-            font-size: 14px;
-        }
-        .contact-address span:first-child { margin-right: 8px; }
-
-        .sidebar-section { margin-bottom: 30px; }
-        .section-header {
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text-secondary);
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-
-        .about-content p { color: var(--text-secondary); font-size: 15px; }
-
-        .edu-item { margin-bottom: 15px; }
-        .edu-header {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 600;
-            margin-bottom: 4px;
-            color: var(--text-main);
-        }
-        .edu-desc { font-size: 14px; color: var(--text-secondary); }
-
-        .languages-list { list-style: none; }
-        .lang-item {
-            display: inline-block;
-            background: var(--bg-color);
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 13px;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            color: var(--text-main);
-        }
-
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .skill-tag {
-            background: #f3f4f6;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            color: var(--text-main);
-            font-family: 'Manrope', sans-serif;
-        }
-
-        /* Правая колонка */
-        .right-content {
-            flex: 2;
-            padding: 40px;
-        }
-
-        .experience-item { margin-bottom: 40px; }
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 10px;
-        }
-        .exp-company {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-main);
-        }
-        .exp-period {
-            font-size: 14px;
-            color: var(--text-secondary);
-        }
-        .exp-role {
-            font-size: 15px;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 10px;
-            display: block;
-        }
-        .exp-desc {
-            color: var(--text-secondary);
-            font-size: 15px;
-        }
-        .exp-desc ul { margin-top: 10px; margin-left: 20px; }
-        .exp-desc li { margin-bottom: 5px; }
-
-        @media (max-width: 768px) {
-            .resume-container { flex-direction: column; }
-            .left-sidebar { border-right: none; border-bottom: 1px solid var(--border-color); }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body lang="ru">
 
@@ -185,45 +15,47 @@
         <!-- ===== ЛЕВАЯ КОЛОНКА ===== -->
         <aside class="left-sidebar">
             <div class="profile-img-wrapper">
-                <!-- ВАЖНО: Файл должен называться photo.jpg (латиницей) и лежать в корне репозитория -->
-                <img src="photo.jpg" alt="Фото Анастасии" onerror="this.style.display='none'">
+                <img src="photo.jpg" alt="Фото" onerror="this.style.display='none'">
             </div>
 
             <div class="name-title">
-                <h1>Анастасия Ганц</h1>
-                <h2>Руководитель портфеля цифровых продуктов</h2>
+                <h1>Ганц Анастасия</h1>
+                <h2>Развитие цифровых портфелей (SaaS, B2B2C)</h2>
             </div>
 
             <div class="contacts-container">
                 <div class="contact-group">
                     <span>📱</span>
-                    <a href="tel:+79990000000">+7 (999) 000-00-00</a>
+                    <a href="tel:+79264571057">+7 (926) 457-10-57</a>
                 </div>
                 <div class="contact-group">
                     <span>🔗</span>
-                    <a href="https://t.me/your_telegram_nickname" target="_blank">@your_telegram_nickname</a>
+                    <a href="https://t.me/gantsss" target="_blank">gantsss</a>
                 </div>
                 <div class="contact-group">
                     <span>📩</span>
-                    <a href="mailto:email@example.com">email@example.com</a>
+                    <a href="mailto:gants92@mail.ru">gants92@mail.ru</a>
                 </div>
                 <div class="contact-group">
-                    <svg class="setka-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px; margin-right: 8px; vertical-align: middle;">
+                    <svg class="setka-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5V7l5 2.5 5-2.5v6z"/>
                     </svg>
-                    <a href="https://setka.io/your-profile" target="_blank">Setka Profile</a>
+                    <a href="https://setka.ru/users/019c4c59-99b8-73f1-a0b0-e34b3bd0fdbb" target="_blank">Setka</a>
                 </div>
             </div>
 
             <div class="contact-address">
                 <span>📍</span>
-                <span>Москва, Россия</span>
+                <span>Москва, м. Аэропорт</span>
             </div>
 
             <div class="sidebar-section">
                 <h3 class="section-header">О себе</h3>
                 <div class="about-content">
-                    <p>Опытный руководитель с экспертизой в CVM, продуктовом менеджменте и аналитике. Управляю кросс-функциональными командами и запускаю продукты с нуля до масштабирования. Фокус на метриках роста и пользовательском опыте.</p>
+                    <p>Эксперт в развитии портфелей и экосистемы с опытом управления Revenue YoY&gt;3 млрд ₽, GM, LTV, Retention, ARPU/ARPPU (10 лет в Телеком, IT, FMCG).</p>
+                    <p>Сильна в построении системных омниканальных сегментных стратегий, воронок привлечения и удержания, развитии каналов и масштабировании growth-гипотез на основе data-driven подхода. Имею опыт развития цифровых продуктов, управления партнерскими экосистемами, формирования команд и трансформации процессов в условиях неопределенности, роста и организационных изменений.</p>
+                    <p>Работаю на стыке продукта, маркетинга, аналитики и технологий. Умею объединять команды вокруг бизнес-целей, принимать решения через влияние на P&amp;L и находить баланс между коммерческой эффективностью и клиентской удовлетворенностью.</p>
+                    <p>Фокус — измеримый результат.</p>
                 </div>
             </div>
 
@@ -231,73 +63,168 @@
                 <h3 class="section-header">Образование</h3>
                 <div class="edu-item">
                     <div class="edu-header">
-                        <span>МГУ им. М.В. Ломоносова</span>
-                        <span>2018–2022</span>
+                        <span>МГТУ «СТАНКИН»</span>
+                        <span>2026</span>
                     </div>
-                    <div class="edu-desc">Факультет вычислительной математики и кибернетики, специальность: Прикладная математика и информатика</div>
+                    <div class="edu-desc">Data Scientist (Python), ML / AI</div>
                 </div>
                 <div class="edu-item">
                     <div class="edu-header">
-                        <span>Яндекс Практикум</span>
-                        <span>2021</span>
+                        <span>Growth Academy</span>
+                        <span>2022</span>
                     </div>
-                    <div class="edu-desc">Управление цифровыми продуктами</div>
+                    <div class="edu-desc">Growth Hacking</div>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-header">
+                        <span>НИУ МГСУ, Москва</span>
+                        <span>2015</span>
+                    </div>
+                    <div class="edu-desc">Институт экономики, управления и информационных систем в строительстве и недвижимости — Экономика и управление на предприятии в строительстве (экономист-менеджер)</div>
                 </div>
             </div>
 
             <div class="languages-section">
                 <h3 class="section-header">Языки</h3>
                 <ul class="languages-list">
-                    <li class="lang-item">Русский, родной</li>
-                    <li class="lang-item">Английский, B2</li>
+                    <li class="lang-item">Русский, Родной</li>
+                    <li class="lang-item">Английский, B1 - средний</li>
                 </ul>
             </div>
-
             <div class="skills-section">
                 <div class="skills-grid">
-                    <span class="skill-tag">Product Management</span>
+                    <span class="skill-tag">Разработка стратегий продвижения</span>
+                    <span class="skill-tag">CJM</span>
+                    <span class="skill-tag">P&amp;L</span>
+                    <span class="skill-tag">Performance Marketing</span>
+                    <span class="skill-tag">McKinsey</span>
+                    <span class="skill-tag">Подписки</span>
+                    <span class="skill-tag">Monetization</span>
+                    <span class="skill-tag">Retention</span>
+                    <span class="skill-tag">Activation</span>
+                    <span class="skill-tag">Jira</span>
+                    <span class="skill-tag">E-Commerce</span>
+                    <span class="skill-tag">Product Metrics</span>
+                    <span class="skill-tag">Cohort Analysis</span>
+                    <span class="skill-tag">Digital Marketing</span>
+                    <span class="skill-tag">Воронки</span>
+                    <span class="skill-tag">UI/UX</span>
+                    <span class="skill-tag">Start-up</span>
+                    <span class="skill-tag">Оптимизация бизнес-процессов</span>
+                    <span class="skill-tag">Growth Hacking</span>
+                    <span class="skill-tag">Управление командами</span>
+                    <span class="skill-tag">Revenue Growth</span>
+                    <span class="skill-tag">CPA</span>
+                    <span class="skill-tag">Лидогенерация</span>
+                    <span class="skill-tag">Agile</span>
                     <span class="skill-tag">CVM</span>
-                    <span class="skill-tag">Data Analysis</span>
+                    <span class="skill-tag">A/B Test</span>
+                    <span class="skill-tag">CustDev</span>
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">Power BI</span>
                     <span class="skill-tag">Python</span>
-                    <span class="skill-tag">SQL</span>
-                    <span class="skill-tag">Jira / Confluence</span>
                 </div>
             </div>
+
         </aside>
 
         <!-- ===== ПРАВАЯ КОЛОНКА ===== -->
         <main class="right-content">
 
+            <!-- 1. Проектная деятельность -->
             <div class="experience-item">
                 <div class="exp-header">
-                    <span class="exp-company">ООО «Цифровые Решения»</span>
-                    <span class="exp-period">2022 — н.в.</span>
+                    <span class="exp-company">Проектная деятельность</span>
+                    <span class="exp-period">Октябрь 2024 — Сентябрь 2026</span>
                 </div>
-                <span class="exp-role">Руководитель портфеля цифровых продуктов</span>
-                <div class="exp-desc">
-                    <p>Управление портфелем из 5 цифровых продуктов (B2B и B2C). Ответственность за P&L, стратегию развития и достижение KPI по выручке и удержанию пользователей.</p>
-                    <ul>
-                        <li>Запустила новый продукт с нуля: от идеи до выхода на рынок за 4 месяца.</li>
-                        <li>Увеличила LTV пользователей на 23% за счет внедрения персонализации.</li>
-                        <li>Руководила командой из 12 человек (разработка, дизайн, аналитика, маркетинг).</li>
-                    </ul>
-                </div>
+                <div class="exp-position">Развитие продукта, маркетинга, экосистемы</div>
+
+                <ol class="num-list">
+                    <li>
+                        Консалтинг для продавцов на маркетплейсе (WB), товары из Китая:
+                        <ul class="dash-list">
+                            <li>Стратегия роста, unit-экономика, CAC/LTV, P&amp;L.</li>
+                            <li>Анализ и поиск новых ниш, гипотезы, дизайн экспериментов.</li>
+                        </ul>
+                    </li>
+                    <li>Развивала MVP-продукт: миссия, ЦА, монетизация (книги).</li>
+                    <li>Обучение Data Science AI/ML (Python), МГТУ «СТАНКИН» — сентябрь 2026.</li>
+                </ol>
             </div>
 
+            <!-- 2. Эр-1 (IT ЭР-Телеком) -->
             <div class="experience-item">
                 <div class="exp-header">
-                    <span class="exp-company">ООО «ТехноЛаб»</span>
-                    <span class="exp-period">2020 — 2022</span>
+                    <span class="exp-company">Эр-1 (IT ЭР-Телеком)</span>
+                    <span class="exp-period">Апрель 2024 — Сентябрь 2024</span>
                 </div>
-                <span class="exp-role">Product Manager</span>
-                <div class="exp-desc">
-                    <p>Управление продуктом в сфере автоматизации бизнес-процессов. Фокус на улучшении UX и сокращении времени выполнения задач пользователями.</p>
-                    <ul>
-                        <li>Провела серию глубинных интервью с 50+ пользователями для выявления болевых точек.</li>
-                        <li>Внедрила A/B тестирование, что позволило повысить конверсию в целевое действие на 15%.</li>
-                        <li>Оптимизировала бэклог, сократив время разработки фич на 20%.</li>
-                    </ul>
+                <div class="exp-position">Руководитель по развитию каналов, CEO-3, CVM</div>
+                <p class="exp-description">Аудит, оптимизация клиентских сценариев в омниканальной среде и определение точек роста CVM. Управляла эффективностью каналов &gt;10 (цифровые витрины «Дом.ру» и «Умный Дом.ру»; голосовые и офлайн).</p>
+
+                <div class="exp-sub-title">Результаты:</div>
+                <ol class="num-list">
+                    <li>Скорректировала B2C-стратегию с фокусом на Retention, Revenue, Churn.</li>
+                    <li>–20% затрат при сохранении выручки (Робот vs ФОТ ТМ, EBITDA).</li>
+                    <li>Масштабировала up-sell, cross-sell, down-sell-механики (CR, GM, ROI).</li>
+                    <li>Внедрила и развила аналитику (дашборды, связь КГ/ЦГ и бизнес-метрики).</li>
+                    <li>Определила подход для RTIM персонализации (NBA, транскрибация).</li>
+                </ol>
+
+                <p class="exp-description"><strong>Управление:</strong> выручка (pipeline), кросс-команды (каналы, маркетинг, продукты, аналитика, CRM, разработка, подрядчики); KPI/OKR; бэклог &gt;100 growth-проектов с инкрементальной выручкой (RICE, HADI, NPD, RoadMap, интеграция с CRM).</p>
+            </div>
+
+            <!-- 3. МегаФон -->
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-company">МегаФон</span>
+                    <span class="exp-period">Ноябрь 2018 — Октябрь 2023</span>
                 </div>
+                <div class="exp-position">Руководитель портфеля цифровых продуктов, Экосистема, CEO-3, CVM</div>
+                <p class="exp-description">Развитие бренд-партнёрств и монетизация экосистемного портфеля с нуля. Управляла сложными транзакционными продуктами и продвижением на базе &gt;40 млн пользователей (B2C/B2B, white-label, revenue share, startup, ecom).</p>
+
+                <div class="exp-sub-title">Результаты:</div>
+                <ol class="num-list">
+                    <li>+30% YoY выручки портфеля, GM &gt; 500 млн ₽.</li>
+                    <li>+150% CR, +50% AOV, +30% T2Paid, +20% WB, +15% LTV, +5% Retention.</li>
+                    <li>+500 000 пользователей в MVP-продукт за квартал.</li>
+                    <li>tNPS из отрицательного значения → +70% при росте Revenue.</li>
+                    <li>–50% затрат за счёт перехода в digital-каналы при росте DAU/MAU.</li>
+                </ol>
+
+                <div class="exp-sub-title">Управление и стратегия:</div>
+                <ol class="num-list">
+                    <li>Развила портфель из 50+ партнёров, &gt;3000 SKU: VKCombo, ЯндексПлюс, МегаФонПлюс, START, ИВИ, Викторины, Ozon, Kids360, Перекрёсток, Метро и др.</li>
+                    <li>Организовала команду 7+ человек (Agile, KPI, ИПР); структуру, процессы.</li>
+                    <li>Внедряла CRM промо-механики с прямым влиянием на бизнес: бандл с кредитными и телеком-продуктами, лояльность, миграции (McKinsey, репрайсы, opt-out/in).</li>
+                    <li>
+                        Управляла HADI-циклом запусков от идеи до результатов (CPA, ROI, инкремент):
+                        <ul class="dash-list">
+                            <li>анализ рынка и ЦА, когортный анализ (P&amp;L); план-факт-прогноз; RoadMap;</li>
+                            <li>УТП, контент (+медиапланирование), CJM, UX/UI, частота; A/B-тесты → Scale;</li>
+                            <li>бизнес-логика; интеграции; CustDev, JTBD; партнеры и подрядчики;</li>
+                            <li>матрицы ЖЦК: привлечение, онбординг, вовлечение, удержание, реактивация;</li>
+                            <li>сегментация ручная и на основе Big Data (NBA, F1-score, RTIM/ML-модели, атрибуция) в 20+ каналах: App, Web, Landing, Banner, Ритейл, КЦ, ТМ, Push, SMS, Email, USSD, SMM, Фишинг, Геймификация, Чат-боты, Роботы, IVR, SEO.</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <!-- 4. SC Johnson -->
+            <div class="experience-item">
+                <div class="exp-header">
+                    <span class="exp-company">SC Johnson (Россия)</span>
+                    <span class="exp-period">Сентябрь 2015 — Август 2018</span>
+                </div>
+                <div class="exp-position">Финансовый аналитик</div>
+                <p class="exp-description">Управляла финансовой эффективностью продуктовых категорий одной из стран:</p>
+
+                <ol class="num-list">
+                    <li>Оборот &gt; 1 млрд ₽ при росте GM категорий +10%.</li>
+                    <li>Контролировала затраты, управляла бюджетом 70 млн ₽ (GAAP: S&amp;OP, P&amp;L).</li>
+                    <li>Автоматизировала процессы ручной смежной отчётности (–20% трудозатрат).</li>
+                    <li>Разрабатывала модели для управления портфелем и GM продуктовой матрицы.</li>
+                    <li>Обучала команды продаж и маркетинга, наставничество со стажерами.</li>
+                </ol>
             </div>
 
         </main>
