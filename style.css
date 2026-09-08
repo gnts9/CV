@@ -568,7 +568,6 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 
     .exp-company, .exp-period {
         white-space: normal;
-    }
 
    /* ===== АДАПТИВНОСТЬ ДЛЯ ОЧЕНЬ УЗКИХ ЭКРАНОВ ===== */
 @media (max-width: 768px) {
