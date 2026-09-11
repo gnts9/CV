@@ -46,7 +46,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     background-color: #ffffffec; 
     
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     
     height: 100vh;
