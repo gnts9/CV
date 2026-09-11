@@ -149,7 +149,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-size: 0.9375rem;
     color: var(--text-secondary);
     
-    margin-bottom: 0rem;
+    margin-bottom: 0.2rem;
     line-height: 0rem;    /* Контролируем высоту строки */
     
     width: calc(50% - 0.5rem); /* 50% минус половина gap */
