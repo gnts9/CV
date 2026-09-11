@@ -209,7 +209,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--text-secondary);
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.75rem;
     text-align: left;
 }
 
