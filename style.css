@@ -138,21 +138,21 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     display: flex;
     flex-wrap: wrap;
     justify-content: center; /* Центрирует левую и правую группы по горизонтали */
-    gap: 0rem;               /* Расстояние между левой и правой частью (было 0.5rem) */
+    gap: 0.7rem;               /* Расстояние между левой и правой частью (было 0.5rem) */
     width: 100%;
 }
 
 .contact-group {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.3rem;
     font-size: 0.9375rem;
     color: var(--text-secondary);
     
     margin-bottom: 0.2rem;
     line-height: 0rem;    /* Контролируем высоту строки */
     
-    width: calc(50% - 0.5rem); /* 50% минус половина gap */
+    width: calc(50% - 0.3rem); /* 50% минус половина gap */
     flex-shrink: 0;             /* Запрещаем сжиматься */
     margin: 0rem;          /* Убирает внешние отступы сверху/снизу */
     box-sizing: border-box;
