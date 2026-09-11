@@ -148,10 +148,15 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     gap: 0.3rem;
     font-size: 0.9375rem;
     color: var(--text-secondary);
-    margin: 0.5rem;          /* Убирает внешние отступы сверху/снизу */
+    
     margin-bottom: 0rem;
     line-height: 0rem;    /* Контролируем высоту строки */
     
+    width: calc(50% - 0.35rem); /* 50% минус половина gap */
+    flex-shrink: 0;             /* Запрещаем сжиматься */
+    margin: 0rem;          /* Убирает внешние отступы сверху/снизу */
+    box-sizing: border-box;
+    justify-content: center;
 }
 .contact-group img,
 .contact-group svg,
@@ -688,7 +693,8 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     }
 
     .contact-group {
-        font-size: 0.875rem;
+        /*font-size: 0.875rem;*/
+        width: calc(25% - 0.525rem);
     }
 
     .exp-header {
