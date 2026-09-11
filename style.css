@@ -136,10 +136,11 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 
 .contacts-container {
     display: flex;
-    flex-wrap: nowrap; /* чтобы контакты НЕ переносились, а wrap - чтобы переносились */
+    flex-wrap: wrap; /* чтобы контакты НЕ переносились, а wrap - чтобы переносились */
     justify-content: center; /* Центрирует левую и правую группы по горизонтали */
     gap: 0.7rem;               /* Расстояние между левой и правой частью (было 0.5rem) */
     width: 100%;
+    box-sizing: border-box;
 }
 
 .contact-group {
