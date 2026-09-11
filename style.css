@@ -139,7 +139,9 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     flex-wrap: wrap;
     justify-content: center; /* Центрирует левую и правую группы по горизонтали */
     gap: 0.7rem;               /* Расстояние между левой и правой частью (было 0.5rem) */
-    width: 100%;
+    
+    width: calc(50% - 0.35rem); /* 2 элемента в ряд: 50% минус половина gap */
+    box-sizing: border-box;
 }
 
 .contact-group {
