@@ -136,10 +136,10 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 
 .contacts-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center; /* Центрирует левую и правую группы по горизонтали */
-    gap: 0.5rem;               /* Расстояние между левой и правой частью (было 0.5rem) */
+    gap: 2rem;               /* Расстояние между левой и правой частью (было 0.5rem) */
     width: 100%;
 }
 
