@@ -152,7 +152,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     margin-bottom: 0rem;
     line-height: 0rem;    /* Контролируем высоту строки */
     
-    width: calc(50% - 0.2rem); /* 50% минус половина gap */
+    width: calc(50% - 0.5rem); /* 50% минус половина gap */
     flex-shrink: 0;             /* Запрещаем сжиматься */
     margin: 0rem;          /* Убирает внешние отступы сверху/снизу */
     box-sizing: border-box;
