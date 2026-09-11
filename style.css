@@ -227,11 +227,11 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 }
 
 .about-content p {
-    margin-bottom: 0.5rem;
+    margin: 0 0 0.5rem 0;
 }
 
 .edu-item {
-    margin-bottom: 0.5rem;
+    margin: 0 0 0.5rem 0;
 }
 
 .edu-header {
@@ -255,7 +255,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 }
 
 .languages-section {
-    margin-top: 0.5rem;
+    margin: 0 0 0.5rem 0;
 }
 
 .languages-list {
@@ -277,7 +277,6 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-weight: 500;
     width: fit-content;
 }
-
 /* ===== СТИЛИ ДЛЯ НАВЫКОВ И ЛИНИИ ПЕРЕД НИМИ ===== */
 .skills-section {
     margin-top: 1rem;
