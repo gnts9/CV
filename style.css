@@ -48,12 +48,9 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-style: normal !important;
 }
 
-/* ===== ГЛАВНЫЙ КОНТЕЙНЕР =====
-   height: auto — контейнер ровно по высоте ЛЕВОЙ колонки.
-   align-items: flex-start — колонки не растягиваются на 100vh.
-   Правую выводим из потока (position: absolute) — она не влияет
-   на высоту контейнера, но растягивается на его высоту через
-   top: 0; bottom: 0. */
+/* ===== ГЛАВНЫЙ КОНТЕЙНЕР — ДЕСКТОП =====
+   height: auto — контейнер по высоте левой колонки.
+   Правая absolute → растягивается ровно по высоте контейнера. */
 .resume-container {
     width: 100%;
     max-width: 1200px;
@@ -70,7 +67,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     scrollbar-gutter: stable;
 }
 
-/* ===== ЛЕВАЯ КОЛОНКА — эталон высоты ===== */
+/* ===== ЛЕВАЯ КОЛОНКА ===== */
 .left-sidebar {
     border-radius: 16px 0 0 16px;
     background-color: #141112;
@@ -336,11 +333,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     border-color: var(--results-green);
 }
 
-/* ===== ПРАВАЯ КОЛОНКА =====
-   position: absolute — выведена из потока, не влияет на высоту
-   контейнера. top:0 bottom:0 — растягивается точно на высоту
-   контейнера (= высоте левой колонки). Если контента больше —
-   появляется свой вертикальный скролл. */
+/* ===== ПРАВАЯ КОЛОНКА — ДЕСКТОП ===== */
 .right-content {
     position: absolute;
     top: 0;
@@ -520,5 +513,40 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         top: 0;
         font-weight: 700;
         color: var(--text-dark);
+    }
+}
+
+/* ============================================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+   Переопределяем на "stretch + static" — в этом варианте
+   обе колонки в одном rendering context, шрифт одинаковый.
+   Никаких zoom, transform, никаких правок meta.
+   ============================================================ */
+@media (hover: none) and (pointer: coarse) {
+
+    /* Контейнер — на всю высоту экрана, колонки тянутся */
+    .resume-container {
+        align-items: stretch;
+        height: 100vh;
+        max-height: 100vh;
+    }
+
+    /* Левая — растягивается на высоту контейнера, свой скролл */
+    .left-sidebar {
+        height: 100%;
+        max-height: 100vh;
+    }
+
+    /* Правая — становится обычным flex-элементом.
+       Именно это даёт одинаковый рендеринг шрифта с левой. */
+    .right-content {
+        position: static;
+        top: auto;
+        right: auto;
+        bottom: auto;
+        flex-grow: 1;
+        width: 60%;
+        height: 100%;
+        max-height: 100vh;
     }
 }
