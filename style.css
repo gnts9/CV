@@ -47,7 +47,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: stretch;
     
     height: 100vh;
     max-height: 100vh;
@@ -71,8 +71,8 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     min-width: 320px;
     flex-shrink: 0;
     
-    overflow-y: auto; 
-    max-height: 100vh;
+    overflow: visible;
+    
     position: static;
     z-index: 2;
     box-sizing: border-box;
@@ -346,8 +346,11 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     background-color: #f6f6f6;
     flex-grow: 1;
     width: 60%;
+    
     overflow-y: auto;
     max-height: 100vh;
+    height: 100%;
+    
     position: static;
     box-sizing: border-box;
     z-index: 2;
