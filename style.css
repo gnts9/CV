@@ -25,7 +25,7 @@ html, body {
 
 body {
     display: flex;
-    align-items: flex-start;   /* ← страница с самого верха */
+    align-items: flex-start;
     justify-content: center;
 }
 
@@ -49,8 +49,11 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 }
 
 /* ===== ГЛАВНЫЙ КОНТЕЙНЕР =====
-   align-items: stretch + height: 100vh — обе колонки на одну высоту,
-   шрифт рендерится в одном контексте. */
+   height: auto — контейнер ровно по высоте ЛЕВОЙ колонки.
+   align-items: flex-start — колонки не растягиваются на 100vh.
+   Правую выводим из потока (position: absolute) — она не влияет
+   на высоту контейнера, но растягивается на его высоту через
+   top: 0; bottom: 0. */
 .resume-container {
     width: 100%;
     max-width: 1200px;
@@ -58,8 +61,8 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     background-color: #ffffffec;
     display: flex;
     flex-direction: row;
-    align-items: stretch;
-    height: 100vh;
+    align-items: flex-start;
+    height: auto;
     max-height: 100vh;
     margin: 0 auto;
     position: relative;
@@ -67,7 +70,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     scrollbar-gutter: stable;
 }
 
-/* ===== ЛЕВАЯ КОЛОНКА ===== */
+/* ===== ЛЕВАЯ КОЛОНКА — эталон высоты ===== */
 .left-sidebar {
     border-radius: 16px 0 0 16px;
     background-color: #141112;
@@ -79,7 +82,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     width: 40%;
     min-width: 320px;
     flex-shrink: 0;
-    height: 100%;
+    height: auto;
     max-height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
@@ -197,7 +200,6 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     flex-shrink: 0;
 }
 
-/* ===== СЕКЦИИ И ЛИНИИ ===== */
 .sidebar-section {
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
@@ -274,7 +276,6 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     width: fit-content;
 }
 
-/* ===== НАВЫКИ ===== */
 .skills-section {
     margin-top: 1rem;
     position: relative;
@@ -336,17 +337,16 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 }
 
 /* ===== ПРАВАЯ КОЛОНКА =====
-   position: static — обычный flex-элемент, как левая колонка.
-   Шрифт рендерится в одном контексте с левой → одинаковый размер. */
+   position: absolute — выведена из потока, не влияет на высоту
+   контейнера. top:0 bottom:0 — растягивается точно на высоту
+   контейнера (= высоте левой колонки). Если контента больше —
+   появляется свой вертикальный скролл. */
 .right-content {
-    position: static;
-    top: auto;
-    right: auto;
-    bottom: auto;
-    flex-grow: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
     width: 60%;
-    height: 100%;
-    max-height: 100vh;
     padding: 1rem;
     border-radius: 0 16px 16px 0;
     background-color: #f6f6f6;
@@ -438,7 +438,6 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     padding-bottom: 2px;
 }
 
-/* ===== НУМЕРОВАННЫЙ СПИСОК ===== */
 .num-list {
     list-style: decimal;
     list-style-position: outside;
@@ -465,7 +464,6 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-size: 0.9375rem;
 }
 
-/* ===== СПИСОК С ТИРЕ ===== */
 .dash-list {
     list-style-type: "—  ";
     list-style-position: outside;
@@ -491,7 +489,6 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-weight: 700;
 }
 
-/* Fallback для браузеров без ::marker */
 @supports not (selector(::marker)) {
     .num-list {
         list-style: none;
