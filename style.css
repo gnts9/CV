@@ -16,6 +16,19 @@
     --skill-border: #d1fae5;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -44,7 +57,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    height: 100vh;
+    height: auto;
     max-height: 100vh;
     margin: 0 auto;
     position: relative;
@@ -64,9 +77,11 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     width: 40%;
     min-width: 320px;
     flex-shrink: 0;
-    overflow-y: auto;
+    height: auto;
     max-height: 100vh;
-    position: static;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
     z-index: 2;
     box-sizing: border-box;
 }
@@ -180,6 +195,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     flex-shrink: 0;
 }
 
+/* ===== СЕКЦИИ И ЛИНИИ ===== */
 .sidebar-section {
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
@@ -256,6 +272,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     width: fit-content;
 }
 
+/* ===== НАВЫКИ ===== */
 .skills-section {
     margin-top: 1rem;
     position: relative;
@@ -318,14 +335,16 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 
 /* ===== ПРАВАЯ КОЛОНКА ===== */
 .right-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 60%;
     padding: 1rem;
     border-radius: 0 16px 16px 0;
     background-color: #f6f6f6;
-    flex-grow: 1;
-    width: 60%;
     overflow-y: auto;
-    max-height: 100vh;
-    position: static;
+    overflow-x: hidden;
     box-sizing: border-box;
     z-index: 2;
     scrollbar-gutter: stable;
@@ -334,11 +353,11 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 .right-content::-webkit-scrollbar { width: 8px; }
 .right-content::-webkit-scrollbar-track { background: transparent; }
 .right-content::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
     border-radius: 6px;
 }
 .right-content::-webkit-scrollbar-thumb:hover {
-    background: rgba(223, 222, 222, 0.6);
+    background: rgba(0, 0, 0, 0.35);
 }
 
 .section-title {
@@ -412,88 +431,117 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     padding-bottom: 2px;
 }
 
+/* ===== НУМЕРОВАННЫЙ СПИСОК =====
+   Используем нативный list-style: decimal + ::marker.
+   Браузер сам ставит ровный отступ между номером и текстом. */
 .num-list {
-    list-style: none;
-    counter-reset: num-counter;
-    padding: 0;
-    margin: 0 0 0.25rem 0;
+    list-style: decimal;
+    list-style-position: outside;
+    padding-left: 1.5rem;
+    margin: 0 0 0.5rem 0;
 }
 
 .num-list > li {
-    counter-increment: num-counter;
-    position: relative;
-    padding-left: 1.5rem;
+    padding-left: 0.25rem;
     margin-bottom: 0.25rem;
     line-height: 1.35;
     color: var(--bg-left);
     font-size: 0.9375rem;
     text-align: justify;
+    text-justify: inter-word;
     hyphens: none;
-    word-break: keep-all;
+    word-break: normal;
     white-space: normal;
 }
 
-.num-list > li::before {
-    content: counter(num-counter) ".";
-    position: absolute;
-    left: 0;
-    top: 0;
+.num-list > li::marker {
     font-weight: 700;
-    font-size: 0.9375rem;
     color: var(--text-dark);
+    font-size: 0.9375rem;
 }
 
+/* ===== СПИСОК С ТИРЕ =====
+   Тот же принцип: нативный marker со строкой "—". */
 .dash-list {
-    list-style: none;
-    padding: 0;
+    list-style-type: "—  ";
+    list-style-position: outside;
+    padding-left: 1.25rem;
     margin: 0.25rem 0 0.5rem 0;
 }
 
 .dash-list > li {
-    position: relative;
-    padding-left: 1.25rem;
+    padding-left: 0.25rem;
     margin-bottom: 0.25rem;
     line-height: 1.35;
     color: var(--text-dark);
     font-size: 0.9375rem;
     text-align: justify;
+    text-justify: inter-word;
     hyphens: none;
-    word-break: keep-all;
+    word-break: normal;
     white-space: normal;
 }
 
-.dash-list > li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    top: 0;
-    font-weight: 700;
+.dash-list > li::marker {
     color: var(--text-dark);
+    font-weight: 700;
 }
 
+/* Fallback для браузеров без ::marker (старые) */
+@supports not (selector(::marker)) {
+    .num-list {
+        list-style: none;
+        counter-reset: num-counter;
+    }
+    .num-list > li {
+        counter-increment: num-counter;
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    .num-list > li::before {
+        content: counter(num-counter) ".";
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-weight: 700;
+        color: var(--text-dark);
+    }
+
+    .dash-list {
+        list-style: none;
+    }
+    .dash-list > li {
+        position: relative;
+        padding-left: 1rem;
+    }
+    .dash-list > li::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        top: 0;
+        font-weight: 700;
+        color: var(--text-dark);
+    }
+}
 /* ============================================================
-   МОБИЛЬНОЕ ПРАВИЛО — ОДНО ЕДИНСТВЕННОЕ.
-   Убирает вертикальное центрирование body, чтобы страница
-   начиналась с самого верха, а не по центру.
-   Ничего другого не трогаем — раскладка 40/60, обе колонки,
-   свои скроллы остаются точно как на десктопе.
+   МОБИЛЬНАЯ ВЕРСИЯ
+   Раскладка 40/60 сохраняется. Вся страница уменьшается zoom.
+   Правая колонка выведена из position: absolute, иначе Safari
+   её не сжимает и она вылезает за экран.
+   Прокрутка — общая по странице, а не внутри колонок.
    ============================================================ */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 @media (hover: none) and (pointer: coarse) {
+    html {
+        zoom: 0.55;
+        overflow-x: hidden;
+    }
+
     body {
-        align-items: flex-start;
-        justify-content: flex-start;
+        display: block;
+        align-items: initial;
+        justify-content: initial;
+        height: auto;
+        min-height: 0;
+        overflow-x: hidden;
     }
 }
