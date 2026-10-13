@@ -25,7 +25,7 @@ html, body {
 
 body {
     display: flex;
-    align-items: flex-start;
+    align-items: flex-start;   /* ← страница с самого верха */
     justify-content: center;
 }
 
@@ -48,7 +48,9 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-style: normal !important;
 }
 
-/* ===== ГЛАВНЫЙ КОНТЕЙНЕР ===== */
+/* ===== ГЛАВНЫЙ КОНТЕЙНЕР =====
+   align-items: stretch + height: 100vh — обе колонки на одну высоту,
+   шрифт рендерится в одном контексте. */
 .resume-container {
     width: 100%;
     max-width: 1200px;
@@ -56,8 +58,8 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     background-color: #ffffffec;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    height: auto;
+    align-items: stretch;
+    height: 100vh;
     max-height: 100vh;
     margin: 0 auto;
     position: relative;
@@ -77,7 +79,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     width: 40%;
     min-width: 320px;
     flex-shrink: 0;
-    height: auto;
+    height: 100%;
     max-height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
@@ -333,13 +335,18 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     border-color: var(--results-green);
 }
 
-/* ===== ПРАВАЯ КОЛОНКА ===== */
+/* ===== ПРАВАЯ КОЛОНКА =====
+   position: static — обычный flex-элемент, как левая колонка.
+   Шрифт рендерится в одном контексте с левой → одинаковый размер. */
 .right-content {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
+    position: static;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    flex-grow: 1;
     width: 60%;
+    height: 100%;
+    max-height: 100vh;
     padding: 1rem;
     border-radius: 0 16px 16px 0;
     background-color: #f6f6f6;
@@ -431,9 +438,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     padding-bottom: 2px;
 }
 
-/* ===== НУМЕРОВАННЫЙ СПИСОК =====
-   Используем нативный list-style: decimal + ::marker.
-   Браузер сам ставит ровный отступ между номером и текстом. */
+/* ===== НУМЕРОВАННЫЙ СПИСОК ===== */
 .num-list {
     list-style: decimal;
     list-style-position: outside;
@@ -460,8 +465,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-size: 0.9375rem;
 }
 
-/* ===== СПИСОК С ТИРЕ =====
-   Тот же принцип: нативный marker со строкой "—". */
+/* ===== СПИСОК С ТИРЕ ===== */
 .dash-list {
     list-style-type: "—  ";
     list-style-position: outside;
@@ -487,7 +491,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-weight: 700;
 }
 
-/* Fallback для браузеров без ::marker (старые) */
+/* Fallback для браузеров без ::marker */
 @supports not (selector(::marker)) {
     .num-list {
         list-style: none;
@@ -507,9 +511,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         color: var(--text-dark);
     }
 
-    .dash-list {
-        list-style: none;
-    }
+    .dash-list { list-style: none; }
     .dash-list > li {
         position: relative;
         padding-left: 1rem;
@@ -523,11 +525,3 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         color: var(--text-dark);
     }
 }
-/* ============================================================
-   МОБИЛЬНАЯ ВЕРСИЯ
-   Раскладка 40/60 сохраняется. Вся страница уменьшается zoom.
-   Правая колонка выведена из position: absolute, иначе Safari
-   её не сжимает и она вылезает за экран.
-   Прокрутка — общая по странице, а не внутри колонок.
-   ============================================================ */
-
