@@ -535,9 +535,9 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
    ============================================================ */
 @media (hover: none) and (pointer: coarse) {
     body {
-        align-items: flex-start;
-        justify-content: flex-start;
         display: block;
+        align-items: initial;
+        justify-content: initial;
     }
     html, body {
         overflow-x: hidden;
