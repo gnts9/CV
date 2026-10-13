@@ -535,21 +535,56 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
    ============================================================ */
 @media (hover: none) and (pointer: coarse) {
 
-    /* 1. Убираем центрирование — страница с самого верха */
-    body {
-        align-items: flex-start;
-        justify-content: flex-start;
+    /* Страница с самого верха, без центрирования */
+    html, body {
+        height: auto;
+        min-height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
-    /* 2. Компенсируем initial-scale=0.5.
-       Дефолт 16px × 0.5 = 8px на экране.
-       Ставим 20px → ~10px на экране, читается нормально.
-       Если мелко — увеличьте до 22px или 24px.
-       Если крупно и появляется скролл — уменьшите до 18px. 
-     * Мобильная версия.
- * Колонки становятся друг под другом.
- * Внутренние скроллы отключаются.
- * Скролл появляется у всей страницы.
- */
+    body {
+        display: block;
+        align-items: initial;
+        justify-content: initial;
+    }
 
+    /* Контейнер — без ограничений по высоте */
+    .resume-container {
+        height: auto;
+        max-height: none;
+        overflow: visible;
+        min-width: 0;
+        width: 100%;
+    }
+
+    /* Правая колонка возвращается в flex-поток */
+    .right-content {
+        position: static;
+        top: auto;
+        right: auto;
+        bottom: auto;
+        width: 60%;
+        height: auto;
+        max-height: none;
+        overflow: visible;
+        flex-grow: 1;
+    }
+
+    /* Левая — без внутреннего скролла */
+    .left-sidebar {
+        height: auto;
+        max-height: none;
+        overflow: visible;
+    }
+
+    /* СЖАТИЕ ВСЕГО МАКЕТА.
+       Подберите одну цифру под свой телефон:
+         0.30 — мелко, влезает с запасом
+         0.35 — оптимум (начните с этого)
+         0.40 — крупнее
+         0.45 — ещё крупнее (может появиться горизонтальный скролл) */
+    html {
+        zoom: 0.35;
+    }
 }
