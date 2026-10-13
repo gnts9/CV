@@ -532,10 +532,11 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
    ============================================================ */
 @media (hover: none) and (pointer: coarse) {
     html {
-        zoom: 0.60;
+        zoom: 0.55;
         overflow-x: hidden;
     }
 
+    /* 1. Сбрасываем центрирование, которое создает отступ слева */
     body {
         display: block;
         align-items: initial;
@@ -543,5 +544,11 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         height: auto;
         min-height: 0;
         overflow-x: hidden;
+    }
+
+    /* 2. Прижимаем контейнер к левому краю */
+    .resume-container {
+        margin: 0;
+        max-width: 100%;
     }
 }
