@@ -8,34 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<script>
-(function () {
-    // Применяем только на тач-устройствах (телефон/планшет)
-    if (!window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
-
-    function fitToScreen() {
-        // Физическая ширина экрана в CSS-пикселях (берём меньшую сторону)
-        var screenW = Math.min(window.screen.width, window.screen.height);
-
-        // У нас: layout=1200px × initial-scale=0.5 → визуально 600px
-        // Нужно: 1200 × zoom × 0.5 = screenW
-        // Отсюда: zoom = screenW / 600
-        var zoom = screenW / 600;
-
-        var html = document.documentElement;
-        // Применяем zoom ко всему дереву
-        html.style.zoom = zoom;
-        // И растягиваем html, чтобы после zoom он занял всю ширину экрана
-        html.style.width = (100 / zoom) + '%';
-    }
-
-    fitToScreen();
-    window.addEventListener('orientationchange', function () {
-        setTimeout(fitToScreen, 250); // ждём, пока экран повернётся
-    });
-    window.addEventListener('resize', fitToScreen);
-})();
-</script>
     
 <body lang="ru">
 
