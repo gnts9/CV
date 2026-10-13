@@ -431,7 +431,9 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     padding-bottom: 2px;
 }
 
-/* ===== НУМЕРОВАННЫЙ СПИСОК ===== */
+/* ===== НУМЕРОВАННЫЙ СПИСОК =====
+   Используем нативный list-style: decimal + ::marker.
+   Браузер сам ставит ровный отступ между номером и текстом. */
 .num-list {
     list-style: decimal;
     list-style-position: outside;
@@ -458,7 +460,8 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-size: 0.9375rem;
 }
 
-/* ===== СПИСОК С ТИРЕ ===== */
+/* ===== СПИСОК С ТИРЕ =====
+   Тот же принцип: нативный marker со строкой "—". */
 .dash-list {
     list-style-type: "—  ";
     list-style-position: outside;
@@ -484,7 +487,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-weight: 700;
 }
 
-/* Fallback для старых браузеров без ::marker */
+/* Fallback для браузеров без ::marker (старые) */
 @supports not (selector(::marker)) {
     .num-list {
         list-style: none;
@@ -504,7 +507,9 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         color: var(--text-dark);
     }
 
-    .dash-list { list-style: none; }
+    .dash-list {
+        list-style: none;
+    }
     .dash-list > li {
         position: relative;
         padding-left: 1rem;
@@ -517,4 +522,34 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         font-weight: 700;
         color: var(--text-dark);
     }
+}
+/* ============================================================
+   МОБИЛЬНЫЕ УСТРОЙСТВА — РАСКЛАДКА НЕ МЕНЯЕТСЯ.
+   Остаются те же 2 колонки, что и на десктопе.
+   Меняются только две вещи:
+     1) страница прижата к верху (без пустоты сверху);
+     2) базовый размер шрифта чуть крупнее, чтобы компенсировать
+        initial-scale=0.5 из <meta viewport>.
+   Срабатывает на реальных тач-устройствах (hover: none, pointer: coarse).
+   На десктопе с мышью — НЕ применяется.
+   ============================================================ */
+@media (hover: none) and (pointer: coarse) {
+
+    /* 1. Убираем центрирование — страница с самого верха */
+    body {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    /* 2. Компенсируем initial-scale=0.5.
+       Дефолт 16px × 0.5 = 8px на экране.
+       Ставим 20px → ~10px на экране, читается нормально.
+       Если мелко — увеличьте до 22px или 24px.
+       Если крупно и появляется скролл — уменьшите до 18px. 
+     * Мобильная версия.
+ * Колонки становятся друг под другом.
+ * Внутренние скроллы отключаются.
+ * Скролл появляется у всей страницы.
+ */
+
 }
