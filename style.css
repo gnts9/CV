@@ -47,7 +47,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     
     display: flex;
     flex-direction: row;
-    align-items: stretch;
+    align-items: center;
     
     height: 100vh;
     max-height: 100vh;
@@ -57,12 +57,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
    /* overflow: hidden;*/
     scrollbar-gutter: stable;
 }
-html, body {
-    height: auto;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
-}
+
 /* ===== ЛЕВАЯ КОЛОНКА ===== */
 .left-sidebar {
     border-radius: 16px 0 0 16px;
@@ -76,8 +71,8 @@ html, body {
     min-width: 320px;
     flex-shrink: 0;
     
-    overflow: visible;
-    
+    overflow-y: auto; 
+    max-height: 100vh;
     position: static;
     z-index: 2;
     box-sizing: border-box;
@@ -351,11 +346,8 @@ html, body {
     background-color: #f6f6f6;
     flex-grow: 1;
     width: 60%;
-    
     overflow-y: auto;
     max-height: 100vh;
-    height: 100%;
-    
     position: static;
     box-sizing: border-box;
     z-index: 2;
