@@ -37,42 +37,28 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-style: normal !important;
 }
 
-/* ===== HTML / BODY: без принудительной высоты ===== */
-html, body {
-    height: auto;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
-    overflow: hidden; /* внешний скролл не нужен — скроллятся колонки */
-}
-
-/* ===== ГЛАВНЫЙ КОНТЕЙНЕР =====
-   height: auto → контейнер берёт высоту по самой высокой колонке.
-   ЛЕВАЯ колонка не может растянуться (у неё нет overflow и max-height),
-   ПРАВАЯ колонка ограничена height: 100% + overflow-y: auto,
-   поэтому она НЕ влияет на высоту контейнера.
-   Итог: контейнер = высоте ЛЕВОЙ колонки. */
+/* ===== ГЛАВНЫЙ КОНТЕЙНЕР ===== */
 .resume-container {
     width: 100%;
     max-width: 1200px;
     min-width: 800px;
-
-    background-color: #ffffffec;
-
+    
+    background-color: #ffffffec; 
+    
     display: flex;
     flex-direction: row;
-    align-items: stretch;
-
+    align-items: center;
+    
     height: 100vh;
     max-height: 100vh;
-
+    
     margin: 0 auto;
-    position: relative;
-    overflow: hidden;
+    position: static;
+   /* overflow: hidden;*/
     scrollbar-gutter: stable;
 }
 
-/* ===== ЛЕВАЯ КОЛОНКА — ЭТАЛОН ВЫСОТЫ ===== */
+/* ===== ЛЕВАЯ КОЛОНКА ===== */
 .left-sidebar {
     border-radius: 16px 0 0 16px;
     background-color: #141112;
@@ -84,12 +70,10 @@ html, body {
     width: 40%;
     min-width: 320px;
     flex-shrink: 0;
-
-    height: 100%;
+    
+    overflow-y: auto; 
     max-height: 100vh;
-    overflow-y: auto;
-
-    position: relative;
+    position: static;
     z-index: 2;
     box-sizing: border-box;
 }
@@ -97,16 +81,20 @@ html, body {
 .left-sidebar::-webkit-scrollbar {
     width: 8px;
 }
+
 .left-sidebar::-webkit-scrollbar-track {
     background: transparent;
 }
+
 .left-sidebar::-webkit-scrollbar-thumb {
     background: rgba(43, 39, 39, 0.8);
     border-radius: 4px;
     border: 2px solid var(--bg-left);
 }
+
 .left-sidebar::-webkit-scrollbar-thumb:hover {
-    background: rgba(78, 76, 76, 0.9);
+    background: rgba(78, 76, 76, 0.9); 
+    border-color: 2px solid var rgba(149, 144, 144, 0.9); 
 }
 
 .profile-img-wrapper {
@@ -149,8 +137,8 @@ html, body {
 .contacts-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.7rem;
+    justify-content: center; /* Центрирует левую и правую группы по горизонтали */
+    gap: 0.7rem;               /* Расстояние между левой и правой частью (было 0.5rem) */
     width: 100%;
 }
 
@@ -160,20 +148,19 @@ html, body {
     gap: 0.3rem;
     font-size: 0.9375rem;
     color: var(--text-secondary);
-    margin: 0.5rem;
+    margin: 0.5rem;          /* Убирает внешние отступы сверху/снизу */
     margin-bottom: 0rem;
-    line-height: 0rem;
+    line-height: 0rem;    /* Контролируем высоту строки */
+    
 }
-
 .contact-group img,
 .contact-group svg,
 .setka-icon {
     width: 1.2rem;
     height: 1.2rem;
-    flex-shrink: 0;
-    display: block;
+    flex-shrink: 0;        /* Запрещает иконке сжиматься */
+    display: block;        /* Убирает лишние отступы у картинок */
 }
-
 .contact-group a {
     color: var(--accent-green);
     text-decoration: none;
@@ -236,7 +223,7 @@ html, body {
     hyphens: none;
     word-break: keep-all;
     white-space: normal;
-    margin: 0;
+    margin: 0;    
 }
 
 .about-content p {
@@ -250,7 +237,7 @@ html, body {
 .edu-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0rem;
+    margin-bottom: 0rem; /*ТУТ НЕ МЕНЯТЬ, 0 чтобы 2 половины были одной длины */
     font-weight: 500;
     font-size: 0.9375rem;
     color: var(--text-main);
@@ -264,7 +251,7 @@ html, body {
     text-align: justify;
     hyphens: none;
     word-break: keep-all;
-    white-space: normal;
+    white-space: normal;  
 }
 
 .languages-section {
@@ -290,17 +277,17 @@ html, body {
     font-weight: 500;
     width: fit-content;
 }
-
-/* ===== СТИЛИ ДЛЯ НАВЫКОВ ===== */
+/* ===== СТИЛИ ДЛЯ НАВЫКОВ И ЛИНИИ ПЕРЕД НИМИ ===== */
 .skills-section {
     margin-top: 1rem;
-    position: relative;
+    position: relative; /* Обязательно для позиционирования линии */
 }
 
+/* Линия ПЕРЕД заголовком навыков (на десктопе) */
 .skills-section::before {
     content: '';
     position: absolute;
-    top: -1rem;
+    top: -1rem; /* Поднимаем линию чуть выше начала секции, чтобы она не сливалась с border-bottom предыдущей секции */
     left: 0;
     right: 0;
     height: 1px;
@@ -340,10 +327,10 @@ html, body {
     font-size: 0.9375rem;
     font-weight: 500;
     transition: all 0.2s;
-    margin: 0.3rem 0.25rem 0 0;
-    white-space: nowrap;
+    margin: 0.3rem 0.25rem 0 0; 
+    white-space: nowrap; 
     word-break: keep-all;
-    text-align: left;
+    text-align: left; 
 }
 
 .skill-tag:hover {
@@ -352,38 +339,38 @@ html, body {
     border-color: var(--results-green);
 }
 
-/* ===== ПРАВАЯ КОЛОНКА — растягивается до высоты левой и скроллится ===== */
+/* ===== ПРАВАЯ КОЛОНКА ===== */
 .right-content {
     padding: 1rem;
-    border-radius: 0 16px 16px 0;
+    border-radius: 0 16px 16px 0; 
     background-color: #f6f6f6;
     flex-grow: 1;
     width: 60%;
-
-    height: 100%;
-    align-self: stretch;
-
     overflow-y: auto;
     max-height: 100vh;
-
-    position: relative;
+    position: static;
     box-sizing: border-box;
     z-index: 2;
-    scrollbar-gutter: stable;
+    scrollbar-gutter: stable; 
 }
 
 .right-content::-webkit-scrollbar {
     width: 8px;
 }
+
 .right-content::-webkit-scrollbar-track {
     background: transparent;
 }
+
 .right-content::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 6px;
+    border-color: 2px solid var rgba(255, 255, 255, 0.2);
 }
+
 .right-content::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(223, 222, 222, 0.6);
+    border-color: 2px solid var rgba(223, 222, 222, 0.6);
 }
 
 .section-title {
@@ -398,7 +385,7 @@ html, body {
 
 .experience-item {
     margin-bottom: 1rem;
-    border: 1px solid var(--text-secondary);
+    border: 1px solid var(--text-secondary); 
     border-radius: 8px;
     padding: 1.5rem;
     background-color: #fffefe;
@@ -445,7 +432,7 @@ html, body {
     text-align: justify;
     hyphens: none;
     word-break: keep-all;
-    white-space: normal;
+    white-space: normal;   
 }
 
 .exp-sub-title {
@@ -478,7 +465,7 @@ html, body {
     text-align: justify;
     hyphens: none;
     word-break: keep-all;
-    white-space: normal;
+    white-space: normal;  
 }
 
 .num-list > li::before {
@@ -507,7 +494,7 @@ html, body {
     text-align: justify;
     hyphens: none;
     word-break: keep-all;
-    white-space: normal;
+    white-space: normal;  
 }
 
 .dash-list > li::before {
@@ -521,16 +508,11 @@ html, body {
 
 /* ===== АДАПТИВНОСТЬ ===== */
 @media (max-width: 1024px) {
-    html, body {
-        overflow: auto;
-    }
-
     .resume-container {
         flex-direction: column;
         height: auto;
         max-height: none;
         overflow: visible;
-        align-items: stretch;
     }
 
     .left-sidebar {
@@ -541,8 +523,9 @@ html, body {
         border-bottom: 1px solid var(--border-color);
         max-height: none;
         height: auto;
-        overflow: visible;
+        overflow-y: auto;
         position: static;
+        scrollbar-gutter: stable; 
     }
 
     .contacts-container {
@@ -566,12 +549,13 @@ html, body {
     }
 
     .right-content {
-        padding: 2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-bottom: 2rem;
         flex-grow: 1;
         width: 100%;
-        height: auto;
         min-height: 0;
-        overflow: visible;
+        overflow-y: auto;
         position: static;
         z-index: 1;
     }
@@ -586,19 +570,27 @@ html, body {
         white-space: normal;
     }
 
+    /* Адаптация линии для навыков на мобильных */
     .skills-section::before {
-        top: 0;
+        top: 0; /* На мобильном линия должна быть ровно сверху блока */
         left: 0;
         right: 0;
         height: 1px;
         background-color: var(--border-color);
     }
 }
+/* ===== АДАПТИВНОСТЬ ===== */
+
+/*
+ * Планшеты и небольшие ноутбуки.
+ * Сохраняем две колонки, но разрешаем им сжиматься.
+ */
 
 @media (max-width: 1100px) and (min-width: 769px) {
     .resume-container {
         width: 100%;
         max-width: 100%;
+        min-height: 650px;
     }
 
     .left-sidebar,
@@ -620,6 +612,14 @@ html, body {
         white-space: normal;
     }
 }
+
+
+/*
+ * Мобильная версия.
+ * Колонки становятся друг под другом.
+ * Внутренние скроллы отключаются.
+ * Скролл появляется у всей страницы.
+ */
 
 @media (max-width: 768px) {
     html,
@@ -706,6 +706,11 @@ html, body {
         padding: 1rem;
     }
 }
+
+
+/*
+ * Очень узкие телефоны.
+ */
 
 @media (max-width: 420px) {
     .left-sidebar,
