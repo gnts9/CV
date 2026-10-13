@@ -556,11 +556,6 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         transform: scale(0.55);
         transform-origin: top left;
 
-        /* Компенсация: 100/0.55 = 181.818% */
-        width: 181.8182%;
-        height: auto;
-        max-height: none;
-
         /* Убираем центрирование от margin: auto */
         margin: 0;
     }
