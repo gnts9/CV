@@ -548,7 +548,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
        transform-origin: top left — чтобы верхний левый угол оставался
        в верхнем левом углу экрана (не было сдвига). */
     .resume-container {
-        transform: scale(0.65);
+        transform: scale(0.35);
         transform-origin: top left;
     }
 }
