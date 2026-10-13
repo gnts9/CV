@@ -42,19 +42,18 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     width: 100%;
     max-width: 1200px;
     min-width: 800px;
-    
-    background-color: #ffffffec; 
-    
+
+    background-color: #ffffffec;
+
     display: flex;
     flex-direction: row;
-    align-items: center;
-    
+    align-items: stretch;   /* ← было center: обе колонки одной высоты */
+
     height: 100vh;
     max-height: 100vh;
-    
+
     margin: 0 auto;
     position: static;
-   /* overflow: hidden;*/
     scrollbar-gutter: stable;
 }
 
@@ -70,8 +69,8 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     width: 40%;
     min-width: 320px;
     flex-shrink: 0;
-    
-    overflow-y: auto; 
+
+    overflow-y: auto;
     max-height: 100vh;
     position: static;
     z-index: 2;
@@ -93,8 +92,8 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 }
 
 .left-sidebar::-webkit-scrollbar-thumb:hover {
-    background: rgba(78, 76, 76, 0.9); 
-    border-color: 2px solid var rgba(149, 144, 144, 0.9); 
+    background: rgba(78, 76, 76, 0.9);
+    border-color: rgba(149, 144, 144, 0.9);
 }
 
 .profile-img-wrapper {
@@ -137,8 +136,8 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 .contacts-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Центрирует левую и правую группы по горизонтали */
-    gap: 0.7rem;               /* Расстояние между левой и правой частью (было 0.5rem) */
+    justify-content: center;
+    gap: 0.7rem;
     width: 100%;
 }
 
@@ -148,19 +147,20 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     gap: 0.3rem;
     font-size: 0.9375rem;
     color: var(--text-secondary);
-    margin: 0.5rem;          /* Убирает внешние отступы сверху/снизу */
+    margin: 0.5rem;
     margin-bottom: 0rem;
-    line-height: 0rem;    /* Контролируем высоту строки */
-    
+    line-height: 0rem;
 }
+
 .contact-group img,
 .contact-group svg,
 .setka-icon {
     width: 1.2rem;
     height: 1.2rem;
-    flex-shrink: 0;        /* Запрещает иконке сжиматься */
-    display: block;        /* Убирает лишние отступы у картинок */
+    flex-shrink: 0;
+    display: block;
 }
+
 .contact-group a {
     color: var(--accent-green);
     text-decoration: none;
@@ -223,7 +223,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     hyphens: none;
     word-break: keep-all;
     white-space: normal;
-    margin: 0;    
+    margin: 0;
 }
 
 .about-content p {
@@ -237,7 +237,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 .edu-header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 0rem; /*ТУТ НЕ МЕНЯТЬ, 0 чтобы 2 половины были одной длины */
+    margin-bottom: 0rem;
     font-weight: 500;
     font-size: 0.9375rem;
     color: var(--text-main);
@@ -251,7 +251,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     text-align: justify;
     hyphens: none;
     word-break: keep-all;
-    white-space: normal;  
+    white-space: normal;
 }
 
 .languages-section {
@@ -277,17 +277,17 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-weight: 500;
     width: fit-content;
 }
-/* ===== СТИЛИ ДЛЯ НАВЫКОВ И ЛИНИИ ПЕРЕД НИМИ ===== */
+
+/* ===== СТИЛИ ДЛЯ НАВЫКОВ ===== */
 .skills-section {
     margin-top: 1rem;
-    position: relative; /* Обязательно для позиционирования линии */
+    position: relative;
 }
 
-/* Линия ПЕРЕД заголовком навыков (на десктопе) */
 .skills-section::before {
     content: '';
     position: absolute;
-    top: -1rem; /* Поднимаем линию чуть выше начала секции, чтобы она не сливалась с border-bottom предыдущей секции */
+    top: -1rem;
     left: 0;
     right: 0;
     height: 1px;
@@ -327,10 +327,11 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-size: 0.9375rem;
     font-weight: 500;
     transition: all 0.2s;
-    margin: 0.3rem 0.25rem 0 0; 
-    white-space: nowrap; 
+    margin: 0.3rem 0.25rem 0 0;
+    white-space: nowrap;
     word-break: keep-all;
-    text-align: left; 
+    text-align: left;
+    line-height: 1.3;
 }
 
 .skill-tag:hover {
@@ -342,7 +343,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 /* ===== ПРАВАЯ КОЛОНКА ===== */
 .right-content {
     padding: 1rem;
-    border-radius: 0 16px 16px 0; 
+    border-radius: 0 16px 16px 0;
     background-color: #f6f6f6;
     flex-grow: 1;
     width: 60%;
@@ -351,7 +352,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     position: static;
     box-sizing: border-box;
     z-index: 2;
-    scrollbar-gutter: stable; 
+    scrollbar-gutter: stable;
 }
 
 .right-content::-webkit-scrollbar {
@@ -365,12 +366,10 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 .right-content::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 6px;
-    border-color: 2px solid var rgba(255, 255, 255, 0.2);
 }
 
 .right-content::-webkit-scrollbar-thumb:hover {
     background: rgba(223, 222, 222, 0.6);
-    border-color: 2px solid var rgba(223, 222, 222, 0.6);
 }
 
 .section-title {
@@ -385,7 +384,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 
 .experience-item {
     margin-bottom: 1rem;
-    border: 1px solid var(--text-secondary); 
+    border: 1px solid var(--text-secondary);
     border-radius: 8px;
     padding: 1.5rem;
     background-color: #fffefe;
@@ -432,7 +431,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     text-align: justify;
     hyphens: none;
     word-break: keep-all;
-    white-space: normal;   
+    white-space: normal;
 }
 
 .exp-sub-title {
@@ -465,7 +464,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     text-align: justify;
     hyphens: none;
     word-break: keep-all;
-    white-space: normal;  
+    white-space: normal;
 }
 
 .num-list > li::before {
@@ -494,7 +493,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     text-align: justify;
     hyphens: none;
     word-break: keep-all;
-    white-space: normal;  
+    white-space: normal;
 }
 
 .dash-list > li::before {
@@ -506,6 +505,34 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     color: var(--text-dark);
 }
 
+/* ===== ЕДИНЫЙ РИТМ ОТСТУПОВ (только правки «пляски») ===== */
+body,
+.resume-container {
+    line-height: 1.45;
+}
+
+.section-header,
+.exp-company,
+.exp-position,
+.exp-sub-title {
+    line-height: 1.25;
+}
+
+.num-list > li,
+.dash-list > li {
+    margin-bottom: 4px;
+}
+
+.num-list > li:last-child,
+.dash-list > li:last-child {
+    margin-bottom: 0;
+}
+
+.exp-sub-title {
+    margin: 10px 0 4px 0;
+    font-weight: 600;
+}
+
 /* ===== АДАПТИВНОСТЬ ===== */
 @media (max-width: 1024px) {
     .resume-container {
@@ -513,6 +540,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         height: auto;
         max-height: none;
         overflow: visible;
+        align-items: stretch;
     }
 
     .left-sidebar {
@@ -525,7 +553,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         height: auto;
         overflow-y: auto;
         position: static;
-        scrollbar-gutter: stable; 
+        scrollbar-gutter: stable;
     }
 
     .contacts-container {
@@ -570,21 +598,14 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         white-space: normal;
     }
 
-    /* Адаптация линии для навыков на мобильных */
     .skills-section::before {
-        top: 0; /* На мобильном линия должна быть ровно сверху блока */
+        top: 0;
         left: 0;
         right: 0;
         height: 1px;
         background-color: var(--border-color);
     }
 }
-/* ===== АДАПТИВНОСТЬ ===== */
-
-/*
- * Планшеты и небольшие ноутбуки.
- * Сохраняем две колонки, но разрешаем им сжиматься.
- */
 
 @media (max-width: 1100px) and (min-width: 769px) {
     .resume-container {
@@ -612,14 +633,6 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         white-space: normal;
     }
 }
-
-
-/*
- * Мобильная версия.
- * Колонки становятся друг под другом.
- * Внутренние скроллы отключаются.
- * Скролл появляется у всей страницы.
- */
 
 @media (max-width: 768px) {
     html,
@@ -707,11 +720,6 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     }
 }
 
-
-/*
- * Очень узкие телефоны.
- */
-
 @media (max-width: 420px) {
     .left-sidebar,
     .right-content {
@@ -734,68 +742,4 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     .exp-period {
         font-size: 0.85rem;
     }
-}
-
-/* ===== ЕДИНЫЙ РИТМ ОТСТУПОВ ===== */
-
-body,
-.resume-container {
-    line-height: 1.45;
-}
-
-.section-header,
-.exp-company,
-.exp-position,
-.exp-sub-title {
-    line-height: 1.25;
-}
-
-p,
-.exp-description,
-.about-content p {
-    margin: 0 0 8px 0;
-}
-
-.num-list,
-.dash-list {
-    margin: 6px 0 10px 0;
-    padding-left: 20px;
-}
-
-.num-list > li,
-.dash-list > li {
-    margin-bottom: 4px;
-}
-
-.num-list > li:last-child,
-.dash-list > li:last-child {
-    margin-bottom: 0;
-}
-
-.dash-list {
-    margin-top: 4px;
-    margin-bottom: 4px;
-}
-
-.exp-sub-title {
-    margin: 10px 0 4px 0;
-    font-weight: 600;
-}
-
-.experience-item {
-    margin-bottom: 22px;
-}
-
-.skills-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 8px;
-}
-
-.skill-tag {
-    margin: 0;
-    line-height: 1.3;
-    display: inline-flex;
-    align-items: center;
-    min-height: 26px;
 }
