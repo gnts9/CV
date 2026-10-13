@@ -16,18 +16,6 @@
     --skill-border: #d1fae5;
 }
 
-/* ============================================================
-   ВАЖНО: отключаем автоматическое увеличение шрифта на мобильных.
-   Без этого мобильные браузеры (особенно iOS Safari) игнорируют
-   initial-scale=0.5 и принудительно увеличивают текст.
-   ============================================================ */
-html {
-    -webkit-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-}
-
 html, body {
     height: 100%;
     margin: 0;
@@ -39,8 +27,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
 }
 
 * {
@@ -77,8 +63,6 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     position: relative;
     overflow: hidden;
     scrollbar-gutter: stable;
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
 }
 
 /* ===== ЛЕВАЯ КОЛОНКА ===== */
@@ -500,7 +484,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-weight: 700;
 }
 
-/* Fallback для браузеров без ::marker */
+/* Fallback для старых браузеров без ::marker */
 @supports not (selector(::marker)) {
     .num-list {
         list-style: none;
@@ -520,9 +504,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         color: var(--text-dark);
     }
 
-    .dash-list {
-        list-style: none;
-    }
+    .dash-list { list-style: none; }
     .dash-list > li {
         position: relative;
         padding-left: 1rem;
@@ -538,21 +520,35 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 }
 
 /* ============================================================
-   МОБИЛЬНЫЕ УСТРОЙСТВА — только 2 правки:
-   1) страница прижата к верху (без пустоты сверху);
-   2) zoom: 0.8 — уменьшает всю страницу до нужного масштаба.
-      Подбирайте: 1 (без изменений), 0.9, 0.8, 0.7, 0.6.
-      Чем меньше значение — тем мельче страница.
-   Раскладка (2 колонки) НЕ меняется.
+   МОБИЛЬНАЯ ВЕРСИЯ
+   Раскладка не меняется — те же 2 колонки, что на десктопе.
+   Вся страница равномерно уменьшается через transform: scale.
+   Ключевое: transform применяется ко ВСЕМУ контейнеру целиком,
+   включая position: absolute правую колонку.
+
+   Подбор scale:
+     0.60 — мелко
+     0.65 — оптимально (по умолчанию)
+     0.70 — крупно
+     0.75 — очень крупно
+
+   Если по бокам остаётся пусто → увеличьте scale (0.7).
+   Если правая колонка обрезается → уменьшите (0.6).
    ============================================================ */
 @media (hover: none) and (pointer: coarse) {
 
+    /* Страница с самого верха, без центрирования */
     body {
         align-items: flex-start;
         justify-content: flex-start;
+        overflow-x: hidden;
     }
 
-    html {
-        zoom: 0.8;
+    /* Масштабируем ВЕСЬ контейнер целиком — и левую, и правую колонки.
+       transform-origin: top left — чтобы верхний левый угол оставался
+       в верхнем левом углу экрана (не было сдвига). */
+    .resume-container {
+        transform: scale(0.65);
+        transform-origin: top left;
     }
 }
