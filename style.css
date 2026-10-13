@@ -530,31 +530,6 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
    её не сжимает и она вылезает за экран.
    Прокрутка — общая по странице, а не внутри колонок.
    ============================================================ */
-@media (hover: none) and (pointer: coarse) {
-    html, body {
-        height: auto;
-        min-height: 100%;
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
-
-    body {
-        display: block;
-        align-items: initial;
-        justify-content: initial;
-    }
-
-    /* Обёртка: layout остаётся 1200px, но растянут так,
-       что после scale = 0.55 занимает ровно ширину экрана */
-    .mobile-scale-wrapper {
-        width: 100%;
-        overflow-x: hidden;
-        /* Никаких изменений layout — только визуальное сжатие */
-    }
-
-    .resume-container {
-        transform: scale(0.55);
-        transform-origin: top left;
 
         /* Убираем центрирование от margin: auto */
         margin: 0;
