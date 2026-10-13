@@ -533,7 +533,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 @media (hover: none) and (pointer: coarse) {
     html, body {
         height: auto;
-        min-height: 0;
+        min-height: 100%;
         overflow-x: hidden;
         overflow-y: auto;
     }
