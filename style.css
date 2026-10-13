@@ -333,7 +333,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     border-color: var(--results-green);
 }
 
-/* ===== ПРАВАЯ КОЛОНКА — как в вашем исходнике, position: absolute ===== */
+/* ===== ПРАВАЯ КОЛОНКА ===== */
 .right-content {
     position: absolute;
     top: 0;
@@ -520,14 +520,29 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 }
 
 /* ============================================================
-   ЕДИНСТВЕННОЕ ПРАВИЛО ДЛЯ МОБИЛЬНОГО
-   Убирает вертикальное центрирование body — страница
-   начинается с самого верха экрана. Больше ничего не меняем,
-   поэтому раскладка, шрифт, скроллы работают точно как на десктопе.
+   МОБИЛЬНАЯ ВЕРСИЯ — только 2 изменения, десктоп не затронут:
+
+   1. body { align-items: flex-start } — убирает центрирование
+      по вертикали, страница начинается сверху.
+
+   2. .right-content { position: static } — в Safari при
+      meta width=1200 + initial-scale=0.5 absolute-элемент
+      рендерится с другим effective scale (отсюда «крупный
+      шрифт справа»). Static даёт одинаковый рендеринг обеих
+      колонок.
    ============================================================ */
 @media (hover: none) and (pointer: coarse) {
     body {
         align-items: flex-start;
         justify-content: flex-start;
+    }
+
+    .right-content {
+        position: static;
+        width: 60%;
+        height: auto;
+        max-height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 }
