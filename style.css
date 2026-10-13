@@ -431,9 +431,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     padding-bottom: 2px;
 }
 
-/* ===== НУМЕРОВАННЫЙ СПИСОК =====
-   Используем нативный list-style: decimal + ::marker.
-   Браузер сам ставит ровный отступ между номером и текстом. */
+/* ===== НУМЕРОВАННЫЙ СПИСОК ===== */
 .num-list {
     list-style: decimal;
     list-style-position: outside;
@@ -460,8 +458,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-size: 0.9375rem;
 }
 
-/* ===== СПИСОК С ТИРЕ =====
-   Тот же принцип: нативный marker со строкой "—". */
+/* ===== СПИСОК С ТИРЕ ===== */
 .dash-list {
     list-style-type: "—  ";
     list-style-position: outside;
@@ -487,7 +484,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-weight: 700;
 }
 
-/* Fallback для браузеров без ::marker (старые) */
+/* Fallback для старых браузеров без ::marker */
 @supports not (selector(::marker)) {
     .num-list {
         list-style: none;
@@ -507,9 +504,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         color: var(--text-dark);
     }
 
-    .dash-list {
-        list-style: none;
-    }
+    .dash-list { list-style: none; }
     .dash-list > li {
         position: relative;
         padding-left: 1rem;
@@ -523,15 +518,3 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         color: var(--text-dark);
     }
 }
-/* ============================================================
-   МОБИЛЬНАЯ ВЕРСИЯ
-   Раскладка 40/60 сохраняется. Вся страница уменьшается zoom.
-   Правая колонка выведена из position: absolute, иначе Safari
-   её не сжимает и она вылезает за экран.
-   Прокрутка — общая по странице, а не внутри колонок.
-   ============================================================ */
-
-        /* Убираем центрирование от margin: auto */
-        margin: 0;
-    }
-
