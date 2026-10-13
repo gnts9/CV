@@ -523,8 +523,4 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         align-items: flex-start;
         justify-content: flex-start;
     }
-    .resume-container {
-        margin-top: 0;
-        align-self: flex-start;
-    }
 }
