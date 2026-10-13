@@ -8,39 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<script>
-(function () {
-    function fitResume() {
-        // Только для тач-устройств — десктоп не трогаем
-        if (!window.matchMedia('(hover: none) and (pointer: coarse)').matches) return;
 
-        // Реальная ширина экрана в CSS-пикселях (портрет или ландшафт — что меньше)
-        var screenW = Math.min(
-            window.screen.width || 0,
-            window.screen.height || 0
-        );
-
-        // От viewport из meta: layout = 1200, initial-scale = 0.5 → 600 CSS px видимой ширины
-        // Нужно уместить все 1200 layout-px в screenW физических.
-        // Коэффициент = screenW / 600.
-        var zoom = screenW / 600;
-
-        // Страховка от странных значений
-        if (zoom > 1) zoom = 1;
-        if (zoom < 0.35) zoom = 0.35;
-
-        document.documentElement.style.zoom = zoom;
-    }
-
-    fitResume();
-
-    // Пересчёт при повороте экрана и изменении размеров
-    window.addEventListener('resize', fitResume);
-    window.addEventListener('orientationchange', function () {
-        setTimeout(fitResume, 150);
-    });
-})();
-</script>
     
 <body lang="ru">
 
