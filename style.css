@@ -531,24 +531,54 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
    Прокрутка — общая по странице, а не внутри колонок.
    ============================================================ */
 @media (hover: none) and (pointer: coarse) {
-    html {
-        zoom: 0.55;
+    html, body {
+        height: auto;
+        min-height: 0;
         overflow-x: hidden;
+        overflow-y: auto;
     }
 
-    /* 1. Сбрасываем центрирование, которое создает отступ слева */
     body {
         display: block;
         align-items: initial;
         justify-content: initial;
-        height: auto;
-        min-height: 0;
-        overflow-x: hidden;
     }
 
-    /* 2. Прижимаем контейнер к левому краю */
+    /* Обёртка: layout остаётся 1200px, но растянут так,
+       что после scale = 0.55 занимает ровно ширину экрана */
+    .mobile-scale-wrapper {
+        width: 100%;
+        overflow-x: hidden;
+        /* Никаких изменений layout — только визуальное сжатие */
+    }
+
     .resume-container {
+        transform: scale(0.55);
+        transform-origin: top left;
+
+        /* Компенсация: 100/0.55 = 181.818% */
+        width: 181.8182%;
+        height: auto;
+        max-height: none;
+
+        /* Убираем центрирование от margin: auto */
         margin: 0;
-        max-width: 100%;
+    }
+
+    /* Колонки — без своих скроллов, прокрутка общая по странице */
+    .left-sidebar {
+        height: auto;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .right-content {
+        position: static;
+        height: auto;
+        max-height: none;
+        overflow: visible;
+        top: auto;
+        right: auto;
+        bottom: auto;
     }
 }
