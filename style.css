@@ -518,6 +518,13 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         color: var(--text-dark);
     }
 }
-html {
-    font-size: clamp(14px, 0.8rem + 0.5vw, 16px);
+@media (max-width: 1220px) {
+    body {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+    .resume-container {
+        margin-top: 0;
+        align-self: flex-start;
+    }
 }
