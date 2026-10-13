@@ -128,7 +128,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 
 .name-title h2 {
     color: var(--text-secondary);
-    font-size: 1.2rem;   /* ← «Развитие цифровых портфелей» */
+    font-size: 1.15rem;   /* ← «Развитие цифровых портфелей» */
     text-transform: uppercase;
     letter-spacing: 1px;
     text-align: center;
