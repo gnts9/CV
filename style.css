@@ -16,7 +16,6 @@
     --skill-border: #d1fae5;
 }
 
-/* ===== БАЗА ===== */
 html, body {
     height: 100%;
     margin: 0;
@@ -28,7 +27,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f3f4f6;
 }
 
 * {
@@ -522,38 +520,67 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 }
 
 /* ============================================================
-   МОБИЛЬНАЯ ВЕРСИЯ
-   Раскладка не меняется — те же 2 колонки, что на десктопе.
-   Масштабируем весь макет через transform: scale,
-   но теперь считаем коэффициент от ширины экрана через vw.
-   Это даёт эффект «уменьшенной копии десктопа».
+   МОБИЛЬНАЯ ВЕРСИЯ — приземляем десктопный макет 1:1.
+   
+   Ключевые идеи:
+   1) zoom сжимает и layout, и визуально → нет пустого места.
+   2) zoom применяется ко всему контейнеру целиком, включая
+      правую колонку. Для этого снимаем position: absolute у
+      правой — иначе некоторые браузеры игнорируют zoom на
+      абсолютно спозиционированных детях.
+   3) Без position: absolute обе колонки становятся flex-элементами
+      и получают одинаковую высоту автоматически.
    ============================================================ */
 @media (hover: none) and (pointer: coarse) {
 
     /* Страница с самого верха, без центрирования */
+    html, body {
+        height: auto;
+        min-height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
     body {
         display: block;
         align-items: initial;
         justify-content: initial;
-        overflow-x: hidden;
     }
 
-    /* Масштабируем ВЕСЬ контейнер целиком.
-       Коэффициент = ширина_экрана / ширина_макета.
-       Ширина макета у нас 1200px, поэтому делим 100vw на 1200px.
-       calc() сам подставит фактическую ширину экрана. */
-    .resume-container {
-        transform: scale(calc(100vw / 1200));
-        transform-origin: top left;
-
-        /* Компенсируем масштаб, чтобы контейнер не сжимался
-           в четверть экрана: растягиваем его в 1200/100vw раз.
-           Это автоматически, через calc. */
-        width: calc(1200px * 100vw / 1200px);
+    /* Убираем absolute у правой — иначе zoom её не сожмёт */
+    .right-content {
+        position: static;
+        top: auto;
+        right: auto;
+        bottom: auto;
+        width: 60%;
         height: auto;
+        max-height: none;
+        overflow: visible;
+    }
 
-        /* Убираем ограничения, чтобы растяжение не обрезалось */
-        max-width: none;
+    /* Убираем ограничения по высоте — чтобы zoom корректно сжал layout */
+    .resume-container {
+        height: auto;
+        max-height: none;
+        overflow: visible;
         min-width: 0;
+    }
+
+    .left-sidebar {
+        height: auto;
+        max-height: none;
+        overflow: visible;
+    }
+
+    /* САМО МАСШТАБИРОВАНИЕ.
+       zoom сжимает И layout, И визуальную часть — нет пустого места.
+       Подбор значения:
+         0.30 — мелко, влезает с запасом
+         0.35 — оптимум для большинства телефонов
+         0.40 — крупнее
+         0.45 — ещё крупнее */
+    html {
+        zoom: 0.35;
     }
 }
