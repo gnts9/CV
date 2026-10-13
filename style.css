@@ -119,7 +119,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 
 .name-title h1 {
     color: var(--text-main);
-    font-size: 1.25rem;
+    font-size: 1.35rem;  /* ← ЭТО размер шрифта имени */
     font-weight: 700;
     margin-bottom: 0.5rem;
     text-align: center;
