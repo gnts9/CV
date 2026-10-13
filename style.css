@@ -524,22 +524,66 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     }
 }
 /* ============================================================
-   МОБИЛЬНЫЕ УСТРОЙСТВА — РАСКЛАДКА НЕ МЕНЯЕТСЯ.
-   Остаются те же 2 колонки, что и на десктопе.
-   Меняются только две вещи:
-     1) страница прижата к верху (без пустоты сверху);
-     2) базовый размер шрифта чуть крупнее, чтобы компенсировать
-        initial-scale=0.5 из <meta viewport>.
-   Срабатывает на реальных тач-устройствах (hover: none, pointer: coarse).
-   На десктопе с мышью — НЕ применяется.
+   МОБИЛЬНАЯ ВЕРСИЯ
+   Раскладка 40/60 сохраняется. Вся страница уменьшается zoom.
+   Правая колонка выведена из position: absolute, иначе Safari
+   её не сжимает и она вылезает за экран.
+   Прокрутка — общая по странице, а не внутри колонок.
    ============================================================ */
 @media (hover: none) and (pointer: coarse) {
+
+    html {
+        zoom: 0.65;
+        overflow-x: hidden;
+    }
+
+    html, body {
+        height: auto;
+        min-height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
     body {
         display: block;
         align-items: initial;
         justify-content: initial;
+        width: 100%;
+        min-width: 0;
     }
-    html, body {
-        overflow-x: hidden;
+
+    /* Правая колонка — выводим из absolute, чтобы zoom её сжал */
+    .right-content {
+        position: static;
+        width: 60%;
+        height: auto;
+        max-height: none;
+        overflow: visible;
+        top: auto;
+        right: auto;
+        bottom: auto;
+    }
+
+    /* Контейнер — без фиксированных высот */
+    .resume-container {
+        width: 100%;
+        max-width: 1200px;
+        min-width: 0;
+        height: auto;
+        max-height: none;
+        overflow: visible;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        margin: 0 auto;
+    }
+
+    /* Левая колонка — без своего скролла, растёт вместе со страницей */
+    .left-sidebar {
+        width: 40%;
+        min-width: 0;
+        height: auto;
+        max-height: none;
+        overflow: visible;
     }
 }
