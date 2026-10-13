@@ -431,7 +431,9 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     padding-bottom: 2px;
 }
 
-/* ===== НУМЕРОВАННЫЙ СПИСОК ===== */
+/* ===== НУМЕРОВАННЫЙ СПИСОК =====
+   Используем нативный list-style: decimal + ::marker.
+   Браузер сам ставит ровный отступ между номером и текстом. */
 .num-list {
     list-style: decimal;
     list-style-position: outside;
@@ -458,7 +460,8 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-size: 0.9375rem;
 }
 
-/* ===== СПИСОК С ТИРЕ ===== */
+/* ===== СПИСОК С ТИРЕ =====
+   Тот же принцип: нативный marker со строкой "—". */
 .dash-list {
     list-style-type: "—  ";
     list-style-position: outside;
@@ -484,7 +487,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
     font-weight: 700;
 }
 
-/* Fallback для старых браузеров без ::marker */
+/* Fallback для браузеров без ::marker (старые) */
 @supports not (selector(::marker)) {
     .num-list {
         list-style: none;
@@ -520,105 +523,30 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         color: var(--text-dark);
     }
 }
-
 /* ============================================================
-   МОБИЛЬНАЯ ВЕРСИЯ
-   Срабатывает двумя путями через запятую:
-     1) max-width: 768px — при уменьшении окна браузера на ПК;
-     2) (hover: none) and (pointer: coarse) — на реальных
-        телефонах/планшетах (палец, нет мыши), даже если в
-        <meta viewport> стоит width=1200.
-   На десктопе с мышью и шириной >768px НЕ срабатывает.
+   МОБИЛЬНЫЕ УСТРОЙСТВА — РАСКЛАДКА НЕ МЕНЯЕТСЯ.
+   Остаются те же 2 колонки, что и на десктопе.
+   Меняются только две вещи:
+     1) страница прижата к верху (без пустоты сверху);
+     2) базовый размер шрифта чуть крупнее, чтобы компенсировать
+        initial-scale=0.5 из <meta viewport>.
+   Срабатывает на реальных тач-устройствах (hover: none, pointer: coarse).
+   На десктопе с мышью — НЕ применяется.
    ============================================================ */
-@media (max-width: 768px), (hover: none) and (pointer: coarse) {
+@media (hover: none) and (pointer: coarse) {
 
-    /* 1. Компенсируем initial-scale=0.5 из <meta viewport>.
-       Дефолт 16px × 0.5 = 8px на экране — мелко.
+    /* 1. Убираем центрирование — страница с самого верха */
+    body {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    /* 2. Компенсируем initial-scale=0.5.
+       Дефолт 16px × 0.5 = 8px на экране.
        Ставим 20px → ~10px на экране, читается нормально.
-       Подбирайте в диапазоне 18px…26px. */
+       Если мелко — увеличьте до 22px или 24px.
+       Если крупно и появляется скролл — уменьшите до 18px. */
     html {
         font-size: 20px;
-    }
-
-    /* 2. Отдаём прокрутку всей странице */
-    html, body {
-        height: auto;
-        min-height: 100%;
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
-
-    /* 3. Убираем центрирование — страница с самого верха */
-    body {
-        display: block;
-        align-items: initial;
-        justify-content: initial;
-    }
-
-    /* 4. Контейнер — одна колонка */
-    .resume-container {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        height: auto;
-        max-height: none;
-        overflow: visible;
-        margin: 0;
-        border-radius: 16px;
-    }
-
-    /* 5. Левая колонка — сверху, скругление только сверху */
-    .left-sidebar {
-        position: static;
-        width: 100%;
-        min-width: 0;
-        max-height: none;
-        height: auto;
-        overflow: visible;
-        border-radius: 16px 16px 0 0;
-        padding: 1.5rem;
-    }
-
-    /* 6. Правая колонка — возвращаем в поток, снизу */
-    .right-content {
-        position: static;
-        top: auto;
-        right: auto;
-        bottom: auto;
-        width: 100%;
-        max-height: none;
-        height: auto;
-        overflow: visible;
-        border-radius: 0 0 16px 16px;
-        padding: 1.5rem;
-    }
-
-    /* 7. Шапка опыта — в столбик, чтобы не сжималось */
-    .exp-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-
-    .exp-company,
-    .exp-period {
-        white-space: normal;
-    }
-
-    /* 8. Аватар — чуть меньше под мобильную ширину */
-    .profile-img-wrapper {
-        width: 180px;
-        height: 180px;
-    }
-
-    /* 9. Контакты — центрируем */
-    .contacts-container {
-        justify-content: center;
-    }
-
-    .contact-group {
-        justify-content: center;
     }
 }
