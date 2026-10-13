@@ -314,7 +314,7 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
 .skill-tag {
     display: inline-block;
     background-color: rgba(15, 166, 136, 0.44);
-    color: var(--text-secondary);
+    color: var(--text-main);        /* ← #fefefe — как имя и О себе */
     border: 1px solid rgba(8, 174, 141, 0.163);
     padding: 0.7rem 0.6rem;
     border-radius: 10px;
