@@ -536,6 +536,9 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         overflow-x: hidden;
     }
 
+    /* Перебиваем десктопный body { display: flex; align-items: center;
+       justify-content: center }. Именно justify-content: center
+       создаёт отступ слева — контейнер центрируется, а не прижат влево. */
     body {
         display: block;
         align-items: initial;
@@ -543,5 +546,12 @@ p, ul, ol, li, h1, h2, h3, h4, h5, h6, strong, b, em, i {
         height: auto;
         min-height: 0;
         overflow-x: hidden;
+    }
+
+    /* margin: 0 auto из десктопа центрирует контейнер.
+       Убираем auto — контейнер прижимается к левому краю. */
+    .resume-container {
+        margin: 0;
+        max-width: 100%;
     }
 }
